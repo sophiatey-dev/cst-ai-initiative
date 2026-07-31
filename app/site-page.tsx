@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, type CSSProperties } from "react";
 
 const nav = [
   ["Forum AIR", "AI 论坛 AIR", "/forum"],
@@ -15,7 +15,9 @@ const nav = [
 type Lang = "en" | "zh";
 const LanguageContext = createContext<{lang:Lang;setLang:(lang:Lang)=>void}>({lang:"en",setLang:()=>{}});
 const useLanguage = () => useContext(LanguageContext);
-const localPath = (path:string, lang:Lang) => lang === "zh" ? `/zh${path === "/" ? "" : path}` : path;
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const withBase = (path:string) => path.startsWith("/") ? `${BASE_PATH}${path}` : path;
+const localPath = (path:string, lang:Lang) => withBase(lang === "zh" ? `/zh${path === "/" ? "" : path}` : path);
 const KAKU_365_PAYMENT_URL = "https://fgj4h8mrk8.sg.larksuite.com/share/base/form/shrlgOqgSh5gOey0V4RbRhf0R6c";
 const FORUM_AIR_REGISTRATION_URL = "https://fgj4h8mrk8.sg.larksuite.com/share/base/form/shrlgvDOScY0lhvGzOraLkmKNgb";
 
@@ -52,7 +54,7 @@ function AssetSlot({ label, tall = false }: { label: string; tall?: boolean }) {
 }
 
 function Photo({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
-  return <figure className={`photo ${className}`}><img src={src} alt={alt} /></figure>;
+  return <figure className={`photo ${className}`}><img src={withBase(src)} alt={alt} /></figure>;
 }
 
 function Header() {
@@ -60,7 +62,7 @@ function Header() {
   const {lang,setLang}=useLanguage();
   return <header>
     <a className="brand" href={localPath("/",lang)}>
-      <span className="brand-mark"><img src="/assets/brand/cst-logo-black.png" alt="CST" /></span>
+      <span className="brand-mark"><img src={withBase("/assets/brand/cst-logo-black.png")} alt="CST" /></span>
       <span>AI Initiative<small>{lang==="zh"?"由 Kaku 社群推动":"Powered by Kaku"}</small></span>
     </a>
     <nav className={open ? "open" : ""}>{nav.map(([en,zh,href]) => <a key={href} href={localPath(href,lang)}>{lang==="zh"?zh:en}</a>)}</nav>
@@ -71,7 +73,7 @@ function Header() {
 
 function Footer() {
   const {lang}=useLanguage();
-  return <footer><div><div className="brand"><span className="brand-mark"><img src="/assets/brand/cst-logo-black.png" alt="CST" /></span><span>AI Initiative<small>{lang==="zh"?"从 AI 热潮走向 AI 习惯":"From AI hype to AI habit."}</small></span></div></div><div><strong>{lang==="zh"?"探索":"Explore"}</strong><a href={localPath("/forum",lang)}>Forum AIR</a><a href={localPath("/workshops",lang)}>{lang==="zh"?"免费工作坊":"Free workshops"}</a><a href={localPath("/membership",lang)}>Kaku {lang==="zh"?"会员计划":"membership"}</a></div><div><strong>{lang==="zh"?"参与":"Participate"}</strong><a href={localPath("/calendar",lang)}>{lang==="zh"?"活动日历":"Calendar"}</a><a href={localPath("/community",lang)}>{lang==="zh"?"社群":"Community"}</a><a href={localPath("/enterprise",lang)}>{lang==="zh"?"企业服务":"Enterprise"}</a></div><div><strong>{lang==="zh"?"联系我们":"Contact"}</strong><a href="mailto:anna@cst.training">anna@cst.training</a><a href="https://wa.me/60186606731" target="_blank" rel="noreferrer">WhatsApp · 018-660 6731</a><span>Malaysia</span></div></footer>;
+  return <footer><div><div className="brand"><span className="brand-mark"><img src={withBase("/assets/brand/cst-logo-black.png")} alt="CST" /></span><span>AI Initiative<small>{lang==="zh"?"从 AI 热潮走向 AI 习惯":"From AI hype to AI habit."}</small></span></div></div><div><strong>{lang==="zh"?"探索":"Explore"}</strong><a href={localPath("/forum",lang)}>Forum AIR</a><a href={localPath("/workshops",lang)}>{lang==="zh"?"免费工作坊":"Free workshops"}</a><a href={localPath("/membership",lang)}>Kaku {lang==="zh"?"会员计划":"membership"}</a></div><div><strong>{lang==="zh"?"参与":"Participate"}</strong><a href={localPath("/calendar",lang)}>{lang==="zh"?"活动日历":"Calendar"}</a><a href={localPath("/community",lang)}>{lang==="zh"?"社群":"Community"}</a><a href={localPath("/enterprise",lang)}>{lang==="zh"?"企业服务":"Enterprise"}</a></div><div><strong>{lang==="zh"?"联系我们":"Contact"}</strong><a href="mailto:anna@cst.training">anna@cst.training</a><a href="https://wa.me/60186606731" target="_blank" rel="noreferrer">WhatsApp · 018-660 6731</a><span>Malaysia</span></div></footer>;
 }
 
 function Home() {
@@ -79,7 +81,7 @@ function Home() {
   return <>
     <section className="hero">
       <div className="hero-protocol" aria-hidden="true">
-        <img src="/assets/brand/kaku-identity.png" alt="" />
+        <img src={withBase("/assets/brand/kaku-identity.png")} alt="" />
         <div className="protocol-scan" />
         <div className="protocol-glitch glitch-a" />
         <div className="protocol-glitch glitch-b" />
@@ -93,10 +95,10 @@ function Home() {
     <section className="four-pillars">{(lang==="zh"?["AI 现实|现在究竟正在发生什么？","AI 机遇|AI 可以在哪里创造真正的价值？","AI 挑战|我们必须面对哪些风险与障碍？","AI 就绪|如何从认知走向行动？"]:["AI Reality|What is actually happening now?","AI Opportunity|Where can AI create meaningful value?","AI Challenges|What risks and barriers must we face?","AI Readiness|How do we move from awareness to action?"]).map((x,i)=>{const [a,b]=x.split("|");return <article key={a}><span>0{i+1}</span><h3>{a}</h3><p>{b}</p></article>})}</section>
     <section className="cinematic-band"><Photo src="/assets/events/forum-air/cst-keynote.jpg" alt="CST community keynote and learning session" /><div><span>HUMAN TRANSITION PROTOCOL</span><strong>See the shift.<br/>Name your position.<br/>Move together.</strong></div></section>
     <section className="journey"><div><p className="eyebrow dark">{lang==="zh"?"KAKU 持续学习循环":"THE KAKU LEARNING LOOP"}</p><h2>{lang==="zh"?"一个持续学习的社群。":"A community that keeps learning."}</h2><p>{lang==="zh"?"科技会持续进化，而持续学习的社群也会持续成长。":"Technology will continue to evolve. Communities that continue learning will continue to thrive."}</p></div><div className="loop">{(lang==="zh"?["发现","理解","应用","分享","连接","成长"]:["Discover","Understand","Apply","Share","Connect","Grow"]).map((x,i)=><div key={x}><span>{i+1}</span>{x}</div>)}</div></section>
-    <section className="events-section"><div className="section-head"><div><p className="eyebrow">UPCOMING</p><h2>Step into the conversation.</h2></div><a className="text-link light" href="/calendar">View full calendar →</a></div><div className="event-grid">{events.slice(0,3).map(e=><EventCard key={e.title} e={e}/>)}</div></section>
-    <section className="learning"><div className="section-head"><div><p className="eyebrow dark">LEARN BY BUILDING</p><h2>Practical capability.<br />Deeper thinking.</h2></div><p>Start with useful AI skills. Grow into systems, decisions and community leadership.</p></div>{learning.map(x=><a href="/workshops" className="learning-row" key={x[0]}><span>{x[0]}</span><h3>{x[1]}</h3><p>{x[2]}</p><b>↗</b></a>)}</section>
+    <section className="events-section"><div className="section-head"><div><p className="eyebrow">UPCOMING</p><h2>Step into the conversation.</h2></div><a className="text-link light" href={localPath("/calendar",lang)}>View full calendar →</a></div><div className="event-grid">{events.slice(0,3).map(e=><EventCard key={e.title} e={e}/>)}</div></section>
+    <section className="learning"><div className="section-head"><div><p className="eyebrow dark">LEARN BY BUILDING</p><h2>Practical capability.<br />Deeper thinking.</h2></div><p>Start with useful AI skills. Grow into systems, decisions and community leadership.</p></div>{learning.map(x=><a href={localPath("/workshops",lang)} className="learning-row" key={x[0]}><span>{x[0]}</span><h3>{x[1]}</h3><p>{x[2]}</p><b>↗</b></a>)}</section>
     <MembershipStrip />
-    <section className="pulse-preview"><div><p className="eyebrow dark">AI PULSE · AGENTIC NEWSROOM</p><h2>Understand what changed—and why it matters.</h2><p>Gather → verify → cluster → rank → explain → publish → learn from feedback.</p><a className="button dark-button" href="/pulse">Explore AI Pulse →</a></div><div className="news-card"><span>TODAY · PLACEHOLDER FEED</span><h3>Top AI developments, translated for real life.</h3><ul><li>What happened</li><li>Why it matters</li><li>What it means for SMEs, professionals and communities</li><li>Sources and confidence</li></ul></div></section>
+    <section className="pulse-preview"><div><p className="eyebrow dark">AI PULSE · AGENTIC NEWSROOM</p><h2>Understand what changed—and why it matters.</h2><p>Gather → verify → cluster → rank → explain → publish → learn from feedback.</p><a className="button dark-button" href={localPath("/pulse",lang)}>Explore AI Pulse →</a></div><div className="news-card"><span>TODAY · PLACEHOLDER FEED</span><h3>Top AI developments, translated for real life.</h3><ul><li>What happened</li><li>Why it matters</li><li>What it means for SMEs, professionals and communities</li><li>Sources and confidence</li></ul></div></section>
   </>;
 }
 
@@ -179,14 +181,15 @@ function Enterprise() {
 
 function About() {
  const {lang}=useLanguage();
- return <><InnerHero page="about"/><section className="statement"><p className="eyebrow dark">{lang==="zh"?"我们的理念":"OUR PHILOSOPHY"}</p><h2>{lang==="zh"?<>科技持续进化，学习型社群也会<em>一起进化。</em></>:<>Technology evolves. Learning communities <em>evolve with it.</em></>}</h2><p>{lang==="zh"?"Kaku 以持续学习为核心，让人们不只探索 AI 时代，也能共同面对未来的每一个时代。":"Kaku centres continuous learning so people can navigate not only the AI era, but any era together."}</p></section><section className="kaku-origin"><div className="origin-art"><img src="/assets/brand/kaku-identity.png" alt="Chimpanzee Ka-Ku identity protocol"/><span>CHIMPANZEE KA-KU SOCIETY</span></div><div><p className="eyebrow">{lang==="zh"?"名字背后的故事":"BEHIND THE NAME"}</p><h2>{lang==="zh"?"为什么叫 Ka-Ku？":"Why Ka-Ku?"}</h2><p>{lang==="zh"?"六十多年前，Jane Goodall 让世界重新认识黑猩猩：它们会观察、学习、使用工具，也会在群体中传递经验。面对新环境，真正重要的不是已有多少答案，而是持续适应的能力。":"More than sixty years ago, Jane Goodall helped the world see chimpanzees differently: they observe, learn, use tools and pass knowledge through their groups. In a new environment, what matters is not having every answer—it is the ability to keep adapting."}</p><p>{lang==="zh"?"今天，AI 成为新的工作与认知环境。Chimpanzee Ka-Ku Society 因此而生：放下人类中心的傲慢，保持好奇与敏锐，并通过群体一起学习、实践和进化。":"Today, AI is becoming a new working and cognitive environment. Chimpanzee Ka-Ku Society was created to meet it with humility, curiosity and alertness—and to learn, practise and evolve together."}</p><blockquote>{lang==="zh"?"每一位 Chimp，都从一个 Ka-Ku Moment 开始：AI 不再只是聊天机器人，而开始成为你的思考伙伴。":"Every Chimp begins with a Ka-Ku Moment: when AI stops being just another chatbot and starts becoming your thinking partner."}</blockquote></div></section><section className="origin-principles">{(lang==="zh"?[["保持好奇","主动观察新的工具与可能。"],["保持敏锐","看见变化，也看见真正重要的信号。"],["保持学习","在实践、试错与反思中持续更新。"],["保持连接","把经验带回社群，与伙伴共同成长。"]]:[["Stay curious","Observe new tools and possibilities."],["Stay alert","Notice change—and the signals that truly matter."],["Keep learning","Update through practice, experimentation and reflection."],["Stay connected","Bring experience back and grow with others."]]).map((x,i)=><article key={x[0]}><span>0{i+1}</span><h3>{x[0]}</h3><p>{x[1]}</p></article>)}</section><section className="about-grid"><article><span>{lang==="zh"?"愿景":"VISION"}</span><h2>{lang==="zh"?"让个人与社群做好 AI 就绪。":"AI readiness for people and communities."}</h2><p>{lang==="zh"?"共同走进一个 AI 影响工作、学习、创造、判断与生活的新时代。":"Move together from the non-AI era into a world where AI touches how we work, learn, create, decide and live."}</p></article><article><span>{lang==="zh"?"会员成果":"MEMBER OUTCOME"}</span><h2>{lang==="zh"?"学习、应用、分享、连接。":"Learn. Apply. Share. Connect."}</h2><p>{lang==="zh"?"每一位会员都应该学到一个有用的想法、付诸实践、回馈社群，并认识一位新朋友。":"Every member should gain one useful idea, put it into practice, contribute something back and leave knowing one new person."}</p></article></section></>;
+ return <><InnerHero page="about"/><section className="statement"><p className="eyebrow dark">{lang==="zh"?"我们的理念":"OUR PHILOSOPHY"}</p><h2>{lang==="zh"?<>科技持续进化，学习型社群也会<em>一起进化。</em></>:<>Technology evolves. Learning communities <em>evolve with it.</em></>}</h2><p>{lang==="zh"?"Kaku 以持续学习为核心，让人们不只探索 AI 时代，也能共同面对未来的每一个时代。":"Kaku centres continuous learning so people can navigate not only the AI era, but any era together."}</p></section><section className="kaku-origin"><div className="origin-art"><img src={withBase("/assets/brand/kaku-identity.png")} alt="Chimpanzee Ka-Ku identity protocol"/><span>CHIMPANZEE KA-KU SOCIETY</span></div><div><p className="eyebrow">{lang==="zh"?"名字背后的故事":"BEHIND THE NAME"}</p><h2>{lang==="zh"?"为什么叫 Ka-Ku？":"Why Ka-Ku?"}</h2><p>{lang==="zh"?"六十多年前，Jane Goodall 让世界重新认识黑猩猩：它们会观察、学习、使用工具，也会在群体中传递经验。面对新环境，真正重要的不是已有多少答案，而是持续适应的能力。":"More than sixty years ago, Jane Goodall helped the world see chimpanzees differently: they observe, learn, use tools and pass knowledge through their groups. In a new environment, what matters is not having every answer—it is the ability to keep adapting."}</p><p>{lang==="zh"?"今天，AI 成为新的工作与认知环境。Chimpanzee Ka-Ku Society 因此而生：放下人类中心的傲慢，保持好奇与敏锐，并通过群体一起学习、实践和进化。":"Today, AI is becoming a new working and cognitive environment. Chimpanzee Ka-Ku Society was created to meet it with humility, curiosity and alertness—and to learn, practise and evolve together."}</p><blockquote>{lang==="zh"?"每一位 Chimp，都从一个 Ka-Ku Moment 开始：AI 不再只是聊天机器人，而开始成为你的思考伙伴。":"Every Chimp begins with a Ka-Ku Moment: when AI stops being just another chatbot and starts becoming your thinking partner."}</blockquote></div></section><section className="origin-principles">{(lang==="zh"?[["保持好奇","主动观察新的工具与可能。"],["保持敏锐","看见变化，也看见真正重要的信号。"],["保持学习","在实践、试错与反思中持续更新。"],["保持连接","把经验带回社群，与伙伴共同成长。"]]:[["Stay curious","Observe new tools and possibilities."],["Stay alert","Notice change—and the signals that truly matter."],["Keep learning","Update through practice, experimentation and reflection."],["Stay connected","Bring experience back and grow with others."]]).map((x,i)=><article key={x[0]}><span>0{i+1}</span><h3>{x[0]}</h3><p>{x[1]}</p></article>)}</section><section className="about-grid"><article><span>{lang==="zh"?"愿景":"VISION"}</span><h2>{lang==="zh"?"让个人与社群做好 AI 就绪。":"AI readiness for people and communities."}</h2><p>{lang==="zh"?"共同走进一个 AI 影响工作、学习、创造、判断与生活的新时代。":"Move together from the non-AI era into a world where AI touches how we work, learn, create, decide and live."}</p></article><article><span>{lang==="zh"?"会员成果":"MEMBER OUTCOME"}</span><h2>{lang==="zh"?"学习、应用、分享、连接。":"Learn. Apply. Share. Connect."}</h2><p>{lang==="zh"?"每一位会员都应该学到一个有用的想法、付诸实践、回馈社群，并认识一位新朋友。":"Every member should gain one useful idea, put it into practice, contribute something back and leave knowing one new person."}</p></article></section></>;
 }
 
 function InnerHero({page}:{page:string}) {
  const {lang}=useLanguage();
  const d=pageData[page]||pageData.about;
  const i=lang==="zh"?1:0;
- return <section className={`inner-hero ${page==="about"?"about-hero":""}`}><p className="eyebrow">{d.eyebrow[i]}</p><h1>{d.title[i]}</h1><p>{d.lead[i]}</p>{page==="about"&&<small className="image-credit">{lang==="zh"?"Jane Goodall 与黑猩猩 · 用户提供图片":"Jane Goodall with a chimpanzee · user-provided image"}</small>}<div className="line"/></section>;
+ const style = page==="about" ? ({"--about-image":`url("${withBase("/assets/about/jane-goodall-chimpanzee-about.png")}")`} as CSSProperties) : undefined;
+ return <section style={style} className={`inner-hero ${page==="about"?"about-hero":""}`}><p className="eyebrow">{d.eyebrow[i]}</p><h1>{d.title[i]}</h1><p>{d.lead[i]}</p>{page==="about"&&<small className="image-credit">{lang==="zh"?"Jane Goodall 与黑猩猩 · 用户提供图片":"Jane Goodall with a chimpanzee · user-provided image"}</small>}<div className="line"/></section>;
 }
 
 export function SitePage({page,initialLang="en"}:{page:string;initialLang?:Lang}) {
