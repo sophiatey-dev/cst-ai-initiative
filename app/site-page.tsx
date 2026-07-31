@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useState, type CSSProperties } fr
 const nav = [
   ["Forum AIR", "AI 论坛 AIR", "/forum"],
   ["Explore", "探索", "/workshops"],
+  ["Ka-Ku", "认识 Ka-Ku", "/kaku/"],
   ["Membership", "会员计划", "/membership"],
   ["Community", "社群", "/community"],
   ["Calendar", "活动日历", "/calendar"],
@@ -65,7 +66,7 @@ function Header() {
       <span className="brand-mark"><img src={withBase("/assets/brand/cst-logo-black.png")} alt="CST" /></span>
       <span>AI Initiative<small>{lang==="zh"?"由 Kaku 社群推动":"Powered by Kaku"}</small></span>
     </a>
-    <nav className={open ? "open" : ""}>{nav.map(([en,zh,href]) => <a key={href} href={localPath(href,lang)}>{lang==="zh"?zh:en}</a>)}</nav>
+    <nav className={open ? "open" : ""}>{nav.map(([en,zh,href]) => <a key={href} href={href==="/kaku/"?withBase(href):localPath(href,lang)}>{lang==="zh"?zh:en}</a>)}</nav>
     <div className="header-actions"><div className="language-switch" aria-label="Language"><button className={lang==="en"?"active":""} onClick={()=>setLang("en")}>EN</button><span>/</span><button className={lang==="zh"?"active":""} onClick={()=>setLang("zh")}>中文</button></div><a className="button compact" href={FORUM_AIR_REGISTRATION_URL} target="_blank" rel="noreferrer">{lang==="zh"?"立即报名":"Register"} <span>↗</span></a></div>
     <button className="menu" onClick={() => setOpen(!open)} aria-label="Toggle menu">☰</button>
   </header>;
