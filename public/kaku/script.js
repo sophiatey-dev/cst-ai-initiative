@@ -117,3 +117,23 @@ window.addEventListener("pointerleave", () => {
 
 resize();
 requestAnimationFrame(draw);
+
+const languageButtons = document.querySelectorAll("[data-lang]");
+const bilingualNodes = document.querySelectorAll("[data-en][data-zh]");
+
+function setLanguage(language) {
+  document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+  bilingualNodes.forEach((node) => {
+    node.textContent = node.dataset[language];
+  });
+  languageButtons.forEach((button) => {
+    button.classList.toggle("active", button.dataset.lang === language);
+  });
+  window.localStorage.setItem("kaku-language", language);
+}
+
+languageButtons.forEach((button) => {
+  button.addEventListener("click", () => setLanguage(button.dataset.lang));
+});
+
+setLanguage(window.localStorage.getItem("kaku-language") === "zh" ? "zh" : "en");
