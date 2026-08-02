@@ -228,7 +228,6 @@ export function SitePage({page,initialLang="en"}:{page:string;initialLang?:Lang}
    window.history.pushState({}, "", next==="zh"?`/zh${clean==="/"?"":clean}`:clean);
  };
  useEffect(()=>{window.scrollTo(0,0)},[page]);
- useEffect(()=>{const saved=localStorage.getItem("cst-language") as Lang|null;if(saved&&saved!==lang&&initialLang==="en")setLangState(saved)},[]);
  useEffect(()=>{document.documentElement.lang=lang==="zh"?"zh-CN":"en"},[lang]);
  let body;
  switch(page){case"forum":body=<Forum/>;break;case"workshops":body=<Workshops/>;break;case"membership":body=<Membership/>;break;case"community":body=<Community/>;break;case"calendar":body=<Calendar/>;break;case"pulse":body=<Pulse/>;break;case"enterprise":body=<Enterprise/>;break;case"about":body=<About/>;break;default:body=<Home/>}
