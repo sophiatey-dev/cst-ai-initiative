@@ -34,12 +34,34 @@ const pageData: Record<string, { eyebrow: [string,string]; title: [string,string
   about: { eyebrow: ["ABOUT THE INITIATIVE","关于 CST AI 倡议"], title: ["Navigate every era together.","携手同行，共同探索每一个时代。"], lead: ["The CST AI Initiative helps people move from AI hype to AI habit. Kaku keeps the learning continuous as technology and society evolve.","CST AI Initiative 帮助大众从 AI 热潮走向 AI 习惯；Kaku 则让学习随着科技与社会持续进化。"] },
 };
 
-const events = [
+type CalendarEvent = {
+  category: string;
+  iso: string;
+  date: string;
+  time: string;
+  title: string;
+  copy: string;
+  href?: string;
+};
+
+const events: CalendarEvent[] = [
   { category: "AI for All", iso: "2026-07-25", date: "25 JUL", time: "12:00–4:00 PM", title: "CST AI Forum AIR #01", copy: "Reality, opportunity, challenges and readiness." },
   { category: "AI for All", iso: "2026-07-25", date: "25 JUL", time: "8:00–11:00 AM", title: "Practical AI for Everyday Work", copy: "Fundamentals, prompting and useful daily workflows." },
   { category: "AI for Skills", iso: "2026-08-02", date: "02 AUG", time: "8:00–9:00 PM", title: "Kaku AI Onboarding", copy: "Meet the people, calendar, resources and pathways." },
+  { category: "AI for Business and Works", iso: "2026-08-03", date: "03 AUG", time: "Full day", title: "BiggIns · Full Scale Traders — Day 1", copy: "Trend-trading strategy and risk-management intensive." },
+  { category: "AI for Business and Works", iso: "2026-08-04", date: "04 AUG", time: "Full day", title: "BiggIns · Full Scale Traders — Day 2", copy: "Continue the two-day strategy and risk-management intensive." },
+  { category: "AI for Business and Works", iso: "2026-08-07", date: "07 AUG", time: "Time TBA", title: "BiggIns · Live Trading Gathering", copy: "Observe the market, exchange decisions and learn through live practice." },
+  { category: "AI for Skills", iso: "2026-08-07", date: "07 AUG", time: "7:00–10:00 PM", title: "AI Prompt Thinking Workshop", copy: "Move from chat and prompts to loops, meta-prompting and reusable AI thinking." },
+  { category: "AI for Skills", iso: "2026-08-08", date: "08 AUG", time: "9:00 AM–12:00 PM", title: "AI Prompt Thinking Workshop", copy: "Move from chat and prompts to loops, meta-prompting and reusable AI thinking." },
   { category: "AI for Business and Works", iso: "2026-08-09", date: "09 AUG", time: "2:00–3:00 PM", title: "Vibe Coding: Build a Website", copy: "A one-hour community speaker session." },
-  { category: "Community and Life Interests", iso: "2026-08-16", date: "16 AUG", time: "8:00–9:00 PM", title: "Prompt Jam", copy: "Bring one problem. Build and compare prompt loops." },
+  { category: "AI for Business and Works", iso: "2026-08-12", date: "12 AUG", time: "Time TBA", title: "BiggIns · Preview Class", copy: "Discover the AI-ready trader foundation and the 1% learning pathway." },
+  { category: "Community and Life Interests", iso: "2026-08-16", date: "16 AUG", time: "2:00–4:00 PM", title: "Lunavera Crossover · Signature Scent Experience", copy: "Make your own perfume and explore scent as personal expression.", href: "https://lunavera.space/" },
+  { category: "Community and Life Interests", iso: "2026-08-18", date: "18 AUG", time: "8:00–10:00 PM", title: "Lunavera Crossover · Wine Yoga", copy: "Connect and destress through a relaxed shared yoga experience.", href: "https://lunavera.space/" },
+  { category: "AI for Business and Works", iso: "2026-08-19", date: "19 AUG", time: "Time TBA", title: "BiggIns · AI Trader Foundation — The 1% Playbook", copy: "Master the Basics. Trade Smarter. Become AI-Ready." },
+  { category: "AI for Skills", iso: "2026-08-22", date: "22 AUG", time: "9:00 AM–12:00 PM", title: "AI Prompt Thinking Workshop", copy: "Move from chat and prompts to loops, meta-prompting and reusable AI thinking." },
+  { category: "Community and Life Interests", iso: "2026-08-23", date: "23 AUG", time: "8:00–10:00 AM", title: "Lunavera Crossover · Forest Bath Yoga", copy: "Reconnect and destress through forest bathing and yoga.", href: "https://lunavera.space/" },
+  { category: "AI for Business and Works", iso: "2026-08-26", date: "26 AUG", time: "Time TBA", title: "BiggIns · Preview Class", copy: "Discover the AI-ready trader foundation and the 1% learning pathway." },
+  { category: "Community and Life Interests", iso: "2026-08-27", date: "27 AUG", time: "2:00–4:00 PM", title: "Lunavera Crossover · Coffee Tasting Experience", copy: "Know your beans and make your own coffee drip bag.", href: "https://lunavera.space/" },
 ];
 
 const learning = [
@@ -63,10 +85,23 @@ const eventZh: Record<string,{title:string;copy:string;date:string;time:string}>
   "Kaku AI Onboarding":{title:"Kaku AI 会员入门",copy:"认识社群伙伴、活动日历、学习资源与成长路径。",date:"8月2日",time:"晚上8:00–9:00"},
   "Vibe Coding: Build a Website":{title:"氛围编程：建立网站",copy:"由社群讲者带领的一小时实作分享。",date:"8月9日",time:"下午2:00–3:00"},
   "Prompt Jam":{title:"提示词共创会",copy:"带来一个真实问题，一起建立并比较不同的提示循环。",date:"8月16日",time:"晚上8:00–9:00"},
+  "2026-08-03|BiggIns · Full Scale Traders — Day 1":{title:"BiggIns · 两天全面交易课程 — 第一天",copy:"趋势交易策略与风险管理密集课程。",date:"8月3日",time:"全天"},
+  "2026-08-04|BiggIns · Full Scale Traders — Day 2":{title:"BiggIns · 两天全面交易课程 — 第二天",copy:"继续深入趋势交易策略与风险管理。",date:"8月4日",time:"全天"},
+  "2026-08-07|BiggIns · Live Trading Gathering":{title:"BiggIns · 实盘交易聚会",copy:"共同观察市场、交流判断，并从实盘中学习。",date:"8月7日",time:"时间待公布"},
+  "2026-08-07|AI Prompt Thinking Workshop":{title:"AI 提示思维工作坊",copy:"从 Chat、Prompt 到 Loop 与 Meta-Prompting，建立可重复使用的 AI 思考方法。",date:"8月7日",time:"晚上7:00–10:00"},
+  "2026-08-08|AI Prompt Thinking Workshop":{title:"AI 提示思维工作坊",copy:"从 Chat、Prompt 到 Loop 与 Meta-Prompting，建立可重复使用的 AI 思考方法。",date:"8月8日",time:"上午9:00–中午12:00"},
+  "2026-08-12|BiggIns · Preview Class":{title:"BiggIns · 预览课",copy:"认识 AI 交易员基础与 1% 实战学习路径。",date:"8月12日",time:"时间待公布"},
+  "2026-08-16|Lunavera Crossover · Signature Scent Experience":{title:"Lunavera 联名体验 · 个人香氛工作坊",copy:"亲手调制属于自己的香水，透过气味探索感官与个人表达。",date:"8月16日",time:"下午2:00–4:00"},
+  "2026-08-18|Lunavera Crossover · Wine Yoga":{title:"Lunavera 联名体验 · 红酒瑜伽",copy:"在轻松的瑜伽体验中连结彼此、释放压力。",date:"8月18日",time:"晚上8:00–10:00"},
+  "2026-08-19|BiggIns · AI Trader Foundation — The 1% Playbook":{title:"BiggIns · AI 交易员基础 — 1% 实战手册",copy:"掌握基础，聪明交易，迈向 AI Ready。",date:"8月19日",time:"时间待公布"},
+  "2026-08-22|AI Prompt Thinking Workshop":{title:"AI 提示思维工作坊",copy:"从 Chat、Prompt 到 Loop 与 Meta-Prompting，建立可重复使用的 AI 思考方法。",date:"8月22日",time:"上午9:00–中午12:00"},
+  "2026-08-23|Lunavera Crossover · Forest Bath Yoga":{title:"Lunavera 联名体验 · 森林浴瑜伽",copy:"走进自然，通过森林浴与瑜伽重新连结身心。",date:"8月23日",time:"上午8:00–10:00"},
+  "2026-08-26|BiggIns · Preview Class":{title:"BiggIns · 预览课",copy:"认识 AI 交易员基础与 1% 实战学习路径。",date:"8月26日",time:"时间待公布"},
+  "2026-08-27|Lunavera Crossover · Coffee Tasting Experience":{title:"Lunavera 联名体验 · 咖啡品鉴",copy:"认识咖啡豆风味，并亲手制作自己的咖啡滤泡包。",date:"8月27日",time:"下午2:00–4:00"},
 };
 
 const displayEvent = (e:typeof events[number],lang:Lang) => lang==="zh"
-  ? {...e,category:categoryZh[e.category]||e.category,...(eventZh[e.title]||{})}
+  ? {...e,category:categoryZh[e.category]||e.category,...(eventZh[`${e.iso}|${e.title}`]||eventZh[e.title]||{})}
   : e;
 
 function AssetSlot({ label, tall = false }: { label: string; tall?: boolean }) {
@@ -144,8 +179,9 @@ function Home() {
 function EventCard({e}:{e:typeof events[number]}) {
  const {lang}=useLanguage();
  const isForum=e.title.includes("Forum AIR");
+ const externalHref=isForum?FORUM_AIR_REGISTRATION_URL:e.href;
  const shown=displayEvent(e,lang);
- return <article className="event-card"><span className="tag">{shown.category}</span><div className="event-date"><strong>{shown.date}</strong><span>{shown.time}</span></div><h3>{shown.title}</h3><p>{shown.copy}</p><a href={isForum?FORUM_AIR_REGISTRATION_URL:localPath("/calendar",lang)} target={isForum?"_blank":undefined} rel={isForum?"noreferrer":undefined}>{isForum?(lang==="zh"?"立即报名":"Register now"):(lang==="zh"?"查看详情":"Details")} ↗</a></article>
+ return <article className="event-card"><span className="tag">{shown.category}</span><div className="event-date"><strong>{shown.date}</strong><span>{shown.time}</span></div><h3>{shown.title}</h3><p>{shown.copy}</p><a href={externalHref||localPath("/calendar",lang)} target={externalHref?"_blank":undefined} rel={externalHref?"noreferrer":undefined}>{isForum?(lang==="zh"?"立即报名":"Register now"):e.href?(lang==="zh"?"认识合作伙伴":"Visit partner"):(lang==="zh"?"查看详情":"Details")} ↗</a></article>
 }
 
 function MembershipStrip() {
@@ -165,7 +201,7 @@ function MonthlyCalendar({visibleEvents,lang}:{visibleEvents:typeof events;lang:
  const cat=(c:string)=>c==="AI for All"?"cat-all":c==="AI for Skills"?"cat-skills":c==="AI for Business and Works"?"cat-business":"cat-community";
  return <section className="month-calendar" aria-label={lang==="zh"?"完整月历":"Full month calendar"}>
   <div className="month-toolbar"><div><span className="eyebrow">{lang==="zh"?"月历总览":"MONTHLY OVERVIEW"}</span><h2>{label}</h2></div><div className="month-nav"><button type="button" aria-label={lang==="zh"?"上个月":"Previous month"} onClick={()=>setMonth(new Date(month.getFullYear(),month.getMonth()-1,1))}>←</button><button type="button" aria-label={lang==="zh"?"下个月":"Next month"} onClick={()=>setMonth(new Date(month.getFullYear(),month.getMonth()+1,1))}>→</button></div></div>
-  <div className="month-scroll"><div className="month-weekdays">{weekdays.map(w=><span key={w}>{w}</span>)}</div><div className="month-grid">{days.map(day=>{const key=iso(day);const dayEvents=visibleEvents.filter(e=>e.iso===key);return <div className={`month-day${day.getMonth()!==month.getMonth()?" outside":""}`} key={key}><span className="month-number">{day.getDate()}</span><div className="month-events">{dayEvents.map(e=>{const forum=e.title.includes("Forum AIR");const shown=displayEvent(e,lang);return <a className={`month-event ${cat(e.category)}`} href={forum?FORUM_AIR_REGISTRATION_URL:localPath("/calendar",lang)} target={forum?"_blank":undefined} rel={forum?"noreferrer":undefined} key={e.title}><small>{shown.time}</small><strong>{shown.title}</strong></a>})}</div></div>})}</div></div>
+  <div className="month-scroll"><div className="month-weekdays">{weekdays.map(w=><span key={w}>{w}</span>)}</div><div className="month-grid">{days.map(day=>{const key=iso(day);const dayEvents=visibleEvents.filter(e=>e.iso===key);return <div className={`month-day${day.getMonth()!==month.getMonth()?" outside":""}`} key={key}><span className="month-number">{day.getDate()}</span><div className="month-events">{dayEvents.map(e=>{const forum=e.title.includes("Forum AIR");const href=forum?FORUM_AIR_REGISTRATION_URL:e.href;const shown=displayEvent(e,lang);return <a className={`month-event ${cat(e.category)}`} href={href||localPath("/calendar",lang)} target={href?"_blank":undefined} rel={href?"noreferrer":undefined} key={`${e.iso}-${e.title}-${e.time}`}><small>{shown.time}</small><strong>{shown.title}</strong></a>})}</div></div>})}</div></div>
   <div className="month-legend"><span className="cat-all">{lang==="zh"?"全民 AI":"AI for All"}</span><span className="cat-skills">{lang==="zh"?"AI 技能":"AI for Skills"}</span><span className="cat-business">{lang==="zh"?"AI 商业与工作":"AI for Business and Works"}</span><span className="cat-community">{lang==="zh"?"社群与生活兴趣":"Community and Life Interests"}</span></div>
  </section>;
 }
@@ -175,7 +211,7 @@ function Calendar() {
  const [filter,setFilter]=useState("All");
  const categories=["AI for All","AI for Skills","AI for Business and Works","Community and Life Interests"];
  const filtered=events.filter(e=>filter==="All"||e.category===filter);
- return <><InnerHero page="calendar"/><section className="calendar-section"><div className="filters">{["All",...categories].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f==="All"?(lang==="zh"?"所有活动":"All events"):(lang==="zh"?categoryZh[f]:f)}</button>)}</div><div className="calendar-grid">{filtered.map(e=><EventCard key={e.title} e={e}/>)}</div><MonthlyCalendar visibleEvents={filtered} lang={lang}/><p className="placeholder-note">{lang==="zh"?"待确认资料：每项活动的日期、报名链接、场地、人数上限、主持人，以及会员或公众参与规则。":"Required: confirmed dates, registration links, venues, capacity, host and member/public access rules for each event."}</p></section></>;
+ return <><InnerHero page="calendar"/><section className="calendar-section"><div className="filters">{["All",...categories].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f==="All"?(lang==="zh"?"所有活动":"All events"):(lang==="zh"?categoryZh[f]:f)}</button>)}</div><div className="calendar-grid">{filtered.map(e=><EventCard key={`${e.iso}-${e.title}-${e.time}`} e={e}/>)}</div><MonthlyCalendar visibleEvents={filtered} lang={lang}/><p className="placeholder-note">{lang==="zh"?"BiggIns 部分场次的时间、地点与报名连结将在确认后更新；Lunavera 联名活动可通过活动卡前往合作伙伴网站。":"Times, venues and registration links for selected BiggIns sessions will be updated once confirmed. Lunavera crossover cards link to the partner website."}</p></section></>;
 }
 
 function Pulse() {
