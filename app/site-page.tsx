@@ -56,6 +56,7 @@ const events: CalendarEvent[] = [
   { category: "AI for Business and Works", iso: "2026-08-09", date: "09 AUG", time: "2:00–3:00 PM", title: "Vibe Coding: Build a Website", copy: "A one-hour community speaker session." },
   { category: "AI for Business and Works", iso: "2026-08-12", date: "12 AUG", time: "Time TBA", title: "BiggIns · Preview Class", copy: "Discover the AI-ready trader foundation and the 1% learning pathway." },
   { category: "Community and Life Interests", iso: "2026-08-16", date: "16 AUG", time: "2:00–4:00 PM", title: "Lunavera Crossover · Signature Scent Experience", copy: "Make your own perfume and explore scent as personal expression.", href: "https://lunavera.space/" },
+  { category: "Community and Life Interests", iso: "2026-08-16", date: "16 AUG", time: "8:00–9:00 PM", title: "Prompt Jam", copy: "Bring one problem. Build and compare prompt loops." },
   { category: "Community and Life Interests", iso: "2026-08-18", date: "18 AUG", time: "8:00–10:00 PM", title: "Lunavera Crossover · Wine Yoga", copy: "Connect and destress through a relaxed shared yoga experience.", href: "https://lunavera.space/" },
   { category: "AI for Business and Works", iso: "2026-08-19", date: "19 AUG", time: "Time TBA", title: "BiggIns · AI Trader Foundation — The 1% Playbook", copy: "Master the Basics. Trade Smarter. Become AI-Ready." },
   { category: "AI for Skills", iso: "2026-08-22", date: "22 AUG", time: "9:00 AM–12:00 PM", title: "AI Prompt Thinking Workshop", copy: "Move from chat and prompts to loops, meta-prompting and reusable AI thinking." },
