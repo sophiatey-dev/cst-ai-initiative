@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, type CSSProperties } from "react";
+import { KakuIdentityHero } from "./components/kaku-identity-hero";
 
 const nav = [
   ["Forum AIR", "AI 论坛 AIR", "/forum"],
@@ -157,17 +158,7 @@ function Home() {
     ["ORGANISE","Community & Self-Organisation","Build communities that keep evolving"]
   ];
   return <>
-    <section className="hero wow-hero" data-protocol={lang==="zh"?"系统在线 // CST_AI_倡议 // KAKU_协议_V2":"SYSTEM ONLINE // CST_AI_INITIATIVE // KAKU_PROTOCOL_V2"}>
-      <div className="hero-protocol" aria-hidden="true">
-        <img src={withBase("/assets/brand/kaku-identity.png")} alt="" />
-        <div className="protocol-scan" />
-        <div className="protocol-glitch glitch-a" />
-        <div className="protocol-glitch glitch-b" />
-      </div>
-      <div className="wow-hero-copy"><p className="eyebrow">{lang==="zh"?"CST AI 倡议 · KAKU 社群":"CST AI INITIATIVE · KAKU COMMUNITY"}</p><h1>{lang==="zh"?<>一起学习。<br/><em>一起进化。</em></>:<>We learn.<br/><em>We evolve.</em></>}</h1><p>{lang==="zh"?"连接真实的人、实用的 AI 与持续学习的社群，一起探索 AI 时代，也一起探索未来的每一个时代。":"Connecting real people, practical AI and a continuously learning community—to navigate the AI era and every era after it."}</p><div className="actions"><a className="button" href={FORUM_AIR_REGISTRATION_URL} target="_blank" rel="noreferrer">{lang==="zh"?"加入下一场对话":"Join the next conversation"} ↗</a><a className="wow-round-link" href={localPath("/community",lang)}>{lang==="zh"?"探索 Kaku":"Explore Kaku"}<span>→</span></a></div></div>
-      <div className="wow-hero-character"><img src={withBase("/assets/brand/kaku-identity.png")} alt={lang==="zh"?"Ka-Ku 黑猩猩身份协议":"Ka-Ku chimpanzee identity protocol"}/><span>{lang==="zh"?"持续学习协议已启动":"CONTINUOUS LEARNING PROTOCOL ACTIVE"}</span></div>
-      <div className="wow-hero-scroll">{lang==="zh"?"向下探索":"SCROLL TO EXPLORE"} ↓</div>
-    </section>
+    <KakuIdentityHero protocol={lang==="zh"?"系统在线 // CST_AI_倡议 // KAKU_协议_V2":"SYSTEM ONLINE // CST_AI_INITIATIVE // KAKU_PROTOCOL_V2"} eyebrow={lang==="zh"?"CST AI 倡议 · KAKU 社群":"CST AI INITIATIVE · KAKU COMMUNITY"} headline={lang==="zh"?<>一起学习。<br/><em>一起进化。</em></>:<>We learn.<br/><em>We evolve.</em></>} description={lang==="zh"?"连接真实的人、实用的 AI 与持续学习的社群，一起探索 AI 时代，也一起探索未来的每一个时代。":"Connecting real people, practical AI and a continuously learning community—to navigate the AI era and every era after it."} primaryLabel={lang==="zh"?"加入下一场对话":"Join the next conversation"} primaryHref={FORUM_AIR_REGISTRATION_URL} primaryExternal secondaryLabel={lang==="zh"?"探索 Kaku":"Explore Kaku"} secondaryHref={localPath("/community",lang)} identityLabel={lang==="zh"?"持续学习协议已启动":"CONTINUOUS LEARNING PROTOCOL ACTIVE"} imageAlt={lang==="zh"?"Ka-Ku 黑猩猩身份协议":"Ka-Ku chimpanzee identity protocol"} scrollLabel={lang==="zh"?"向下探索":"SCROLL TO EXPLORE"}/>
     <section className="wow-manifesto"><p className="eyebrow dark">{lang==="zh"?"为什么是 AI · 为什么是现在":"WHY AI · WHY NOW"}</p><h2>{lang==="zh"?<>AI 不只是信息革命。<br/>它是一场<em>认知革命。</em></>:<>AI is more than an information revolution.<br/>It is a <em>cognitive revolution.</em></>}</h2><p>{lang==="zh"?"我们创造连接、体验与学习路径，让不同背景的人从 AI 热潮走向 AI 习惯，并在变化中找到自己的位置。":"We create connections, experiences and learning pathways that move people from AI hype to AI habit—and help them find their place in a changing world."}</p></section>
     <section className="wow-proof"><article className="wow-proof-number"><strong>365</strong><span>{lang==="zh"?"天持续学习":"DAYS OF LEARNING"}</span></article><Photo src="/assets/events/community/cst-276.jpg" alt={lang==="zh"?"Kaku 社群交流":"Kaku community gathering"}/><article><strong>4</strong><span>{lang==="zh"?"条旗舰学习路径":"FLAGSHIP PATHWAYS"}</span></article><Photo src="/assets/events/forum-air/cst-keynote.jpg" alt={lang==="zh"?"CST AI 论坛现场":"CST AI forum keynote"}/><article><strong>1</strong><span>{lang==="zh"?"个共同成长的社群":"COMMUNITY, GROWING TOGETHER"}</span></article></section>
     <section className="wow-worlds"><div className="wow-section-title"><p className="eyebrow dark">{lang==="zh"?"进入我们的世界":"ENTER THE ECOSYSTEM"}</p><h2>{lang==="zh"?"从一场对话开始。":"It starts with a conversation."}</h2></div>{worlds.map((w,i)=><article className={`wow-world ${i%2?"reverse":""}`} key={w.no}><div className="wow-world-image"><Photo src={w.image} alt={w.title}/><span>{w.no}</span></div><div className="wow-world-copy"><p>{w.eyebrow}</p><h3>{w.title}</h3><div>{w.copy}</div><a className="wow-round-link" href={localPath(w.href,lang)}>{w.cta}<span>→</span></a></div></article>)}</section>

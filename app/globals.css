@@ -55,6 +55,13 @@ footer{background:#07090d;color:#aeb4c0;padding:70px 4vw;display:grid;grid-templ
   --kaku-panel-2:#0e131c;
   --kaku-muted:#9aa3ad;
   --kaku-pink:#ff2e88;
+  --identity-bg:#05070b;
+  --identity-cyan:#00ffff;
+  --identity-pink:#ff2e88;
+  --identity-lime:#dfff45;
+  --identity-purple:#9b30ff;
+  --identity-grid:48px;
+  --identity-scan-opacity:.16;
 }
 
 body{
