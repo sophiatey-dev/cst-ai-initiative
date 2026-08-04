@@ -283,3 +283,218 @@ footer{position:relative;background-image:linear-gradient(rgba(255,255,255,.025)
 @media(prefers-reduced-motion:reduce){.identity-field-orbit,.identity-field-scan{animation:none!important}}
 @media(max-width:1000px){.kaku-identity-field{inset:0;opacity:.32;mask-image:linear-gradient(180deg,#000,transparent 82%)}.kaku-identity-field img{right:-18%;width:70vw;height:70vw}.identity-field-signal{display:none}}
 @media(max-width:650px){.identity-inner-hero{min-height:540px}.kaku-identity-field img{right:-48%;width:110vw;height:110vw;opacity:.38}.identity-hero-index{left:22px;right:22px}.identity-hero-index span:nth-child(2){display:none}.identity-page:before{top:68px}.identity-page .photo:after{font-size:6px}}
+
+/* ================================================================
+   KA-KU IDENTITY V3 — ONE VISUAL WORLD
+   The CST initiative now inherits the same expressive editorial
+   language as Ka-Ku Society: purple fields, acid lime, hot pink,
+   cyan signals, oversized mono type and bright community energy.
+   ================================================================ */
+:root{
+  --kaku-violet:#721be3;
+  --kaku-violet-deep:#210736;
+  --kaku-lilac:#f1eaff;
+  --kaku-acid:#dfff45;
+  --kaku-hot:#ff5fa8;
+  --kaku-aqua:#66f6ff;
+  --kaku-black:#08030d;
+}
+
+header{
+  height:76px;
+  background:rgba(31,5,52,.94);
+  border-bottom:1px solid rgba(102,246,255,.35);
+  box-shadow:0 5px 0 rgba(255,95,168,.08),0 16px 60px rgba(30,0,60,.24);
+}
+header .brand-mark{background:var(--kaku-black);border-color:var(--kaku-aqua);box-shadow:4px 4px 0 rgba(255,95,168,.4)}
+header nav a{color:#e5d8ef}
+header nav a:hover{color:var(--kaku-acid)}
+header .button.compact{background:var(--kaku-acid);border-color:var(--kaku-acid);color:var(--kaku-violet-deep);box-shadow:4px 4px 0 var(--kaku-hot)}
+
+.identity-page{
+  --ink:var(--kaku-violet-deep);
+  --paper:var(--kaku-lilac);
+  background:var(--kaku-lilac);
+  color:var(--kaku-violet-deep);
+}
+.identity-page:before{width:5px;opacity:.9;background:linear-gradient(var(--kaku-aqua),var(--kaku-hot) 48%,var(--kaku-acid))}
+.identity-inner-hero{
+  min-height:720px;
+  padding-top:120px;
+  background:
+    radial-gradient(circle at 76% 40%,rgba(255,95,168,.36),transparent 30%),
+    linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px),
+    linear-gradient(135deg,#431078 0%,var(--kaku-violet) 58%,#9b30ff 100%);
+  background-size:auto,64px 64px,64px 64px,auto;
+  color:white;
+  border-bottom:12px solid var(--kaku-acid);
+}
+.identity-inner-hero:after{border-color:rgba(223,255,69,.28);box-shadow:0 0 0 80px rgba(102,246,255,.025)}
+.identity-inner-hero h1{max-width:880px;color:#fff;font-size:clamp(64px,8vw,124px);line-height:.84;text-shadow:4px 0 var(--kaku-hot),-2px 0 var(--kaku-aqua)}
+.identity-inner-hero>p:not(.eyebrow){max-width:650px;color:#f0e8f8;font-family:Arial,sans-serif;font-size:20px}
+.identity-inner-hero .eyebrow{color:var(--kaku-aqua)}
+.kaku-identity-field{opacity:.82;mix-blend-mode:screen}
+.kaku-identity-field img{opacity:.82;filter:contrast(1.4) saturate(1.5) brightness(.82)}
+.identity-field-orbit{border-color:rgba(223,255,69,.66)}
+.identity-field-orbit:after{border-color:rgba(102,246,255,.52)}
+.identity-field-signal{background:rgba(31,5,52,.82);border-color:var(--kaku-aqua);color:var(--kaku-aqua)}
+.identity-hero-index{border-color:rgba(223,255,69,.58);color:#e9dff4}
+
+/* Shared editorial rhythm */
+.identity-page .explore-intro,
+.identity-page .statement,
+.identity-page .journey,
+.identity-page .agenda,
+.identity-page .light-section,
+.identity-page .calendar-section,
+.identity-page .trainer-slot,
+.identity-page .comparison,
+.identity-page .about-grid,
+.identity-page .pulse-preview,
+.identity-page .learning{
+  background:var(--kaku-lilac);
+  color:var(--kaku-violet-deep);
+  border-color:rgba(33,7,54,.18);
+}
+.identity-page .explore-intro h2,
+.identity-page .statement h2,
+.identity-page .journey h2,
+.identity-page .agenda h2,
+.identity-page .light-section h2,
+.identity-page .calendar-section h2,
+.identity-page .trainer-slot h2,
+.identity-page .comparison>h2,
+.identity-page .about-grid h2,
+.identity-page .pulse-preview h2{
+  color:var(--kaku-violet-deep);
+  text-shadow:none;
+}
+.identity-page .eyebrow.dark{color:var(--kaku-violet)}
+.identity-page .explore-intro h2,
+.identity-page .section-head h2,
+.identity-page .comparison>h2,
+.identity-page .trainer-slot h2,
+.identity-page .about-grid h2{font-size:clamp(48px,6.5vw,92px);line-height:.88;letter-spacing:-.075em}
+
+/* Bright Ka-Ku cards instead of a black dashboard */
+.identity-page .workshop-grid,
+.identity-page .community-grid,
+.identity-page .enterprise-grid,
+.identity-page .origin-principles{background:var(--kaku-lilac);gap:16px;color:var(--kaku-violet-deep)}
+.identity-page .workshop-grid article,
+.identity-page .community-grid article,
+.identity-page .enterprise-grid article,
+.identity-page .origin-principles article,
+.identity-page .audience-cards article{
+  color:var(--kaku-violet-deep);
+  border:1px solid var(--kaku-violet-deep);
+  box-shadow:9px 9px 0 rgba(33,7,54,.12);
+}
+.identity-page .workshop-grid article:nth-child(4n+1),
+.identity-page .community-grid article:nth-child(4n+1),
+.identity-page .enterprise-grid article:nth-child(4n+1),
+.identity-page .origin-principles article:nth-child(4n+1),
+.identity-page .audience-cards article:nth-child(4n+1){background:var(--kaku-acid)}
+.identity-page .workshop-grid article:nth-child(4n+2),
+.identity-page .community-grid article:nth-child(4n+2),
+.identity-page .enterprise-grid article:nth-child(4n+2),
+.identity-page .origin-principles article:nth-child(4n+2),
+.identity-page .audience-cards article:nth-child(4n+2){background:var(--kaku-hot)}
+.identity-page .workshop-grid article:nth-child(4n+3),
+.identity-page .community-grid article:nth-child(4n+3),
+.identity-page .enterprise-grid article:nth-child(4n+3),
+.identity-page .origin-principles article:nth-child(4n+3),
+.identity-page .audience-cards article:nth-child(4n+3){background:var(--kaku-violet);color:white}
+.identity-page .workshop-grid article:nth-child(4n),
+.identity-page .community-grid article:nth-child(4n),
+.identity-page .enterprise-grid article:nth-child(4n),
+.identity-page .origin-principles article:nth-child(4n),
+.identity-page .audience-cards article:nth-child(4n){background:var(--kaku-black);color:white}
+.identity-page .workshop-grid article p,
+.identity-page .community-grid article p,
+.identity-page .enterprise-grid article p,
+.identity-page .origin-principles article p,
+.identity-page .audience-cards article p{color:inherit;opacity:.78}
+.identity-page .workshop-grid article:before,
+.identity-page .community-grid article:before,
+.identity-page .enterprise-grid article:before,
+.identity-page .audience-cards article:before{background:currentColor;box-shadow:22px 0 0 rgba(255,255,255,.5)}
+
+/* Deep-purple editorial bands */
+.identity-page .classroom,
+.identity-page .prompt-feature,
+.identity-page .community-proof,
+.identity-page .profile,
+.identity-page .kaku-origin,
+.identity-page .pulse-flow,
+.identity-page .cta,
+.identity-page .gallery,
+.identity-page .events-section,
+.identity-page .membership-strip{
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(102,246,255,.03) 1px,transparent 1px),
+    linear-gradient(145deg,var(--kaku-violet-deep),#4b0d82 70%,var(--kaku-violet));
+  background-size:56px 56px,56px 56px,auto;
+  color:white;
+}
+.identity-page .classroom-head h2,
+.identity-page .prompt-feature h2,
+.identity-page .community-proof h2,
+.identity-page .profile h2,
+.identity-page .kaku-origin h2,
+.identity-page .cta h2{color:white;text-shadow:4px 0 rgba(255,95,168,.48),-2px 0 rgba(102,246,255,.42)}
+.identity-page .classroom-grid{gap:16px}
+.identity-page .classroom-grid article{background:rgba(8,3,13,.64);border-color:rgba(102,246,255,.34)}
+.identity-page .classroom-grid article:nth-child(2){background:rgba(223,255,69,.96);color:var(--kaku-violet-deep)}
+.identity-page .classroom-grid article:nth-child(3){background:rgba(255,95,168,.96);color:var(--kaku-violet-deep)}
+.identity-page .classroom-grid article:nth-child(2) p,
+.identity-page .classroom-grid article:nth-child(3) p{color:inherit}
+.identity-page .classroom-outcomes{border-color:rgba(223,255,69,.5)}
+.identity-page .classroom-outcomes b{color:var(--kaku-acid)}
+
+/* Membership, event and calendar surfaces */
+.identity-page .comparison article{background:white;color:var(--kaku-violet-deep);border:1px solid var(--kaku-violet-deep);box-shadow:12px 12px 0 var(--kaku-hot)}
+.identity-page .comparison .accent-card{background:var(--kaku-violet);color:white;box-shadow:12px 12px 0 var(--kaku-acid)}
+.identity-page .comparison .button.dark-button{background:var(--kaku-violet-deep);border-color:var(--kaku-violet-deep);color:white}
+.identity-page .event-card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.26)}
+.identity-page .month-scroll{background:white;border-color:rgba(33,7,54,.22);box-shadow:12px 12px 0 rgba(114,27,227,.13)}
+.identity-page .month-weekdays{background:var(--kaku-violet-deep)}
+.identity-page .month-day{background:#faf7ff;color:var(--kaku-violet-deep);border-color:rgba(33,7,54,.15)}
+.identity-page .month-day.outside{background:#e8def5;color:#907ba3}
+.identity-page .month-event{background:white;color:var(--kaku-violet-deep);box-shadow:3px 3px 0 rgba(33,7,54,.1)}
+.identity-page .filters button{color:var(--kaku-violet-deep);border-color:var(--kaku-violet-deep)}
+.identity-page .filters button.active{background:var(--kaku-violet-deep);color:var(--kaku-acid)}
+
+/* Images and actions carry the same physical, poster-like treatment */
+.identity-page .photo{border:1px solid var(--kaku-violet-deep);box-shadow:14px 14px 0 var(--kaku-acid);filter:saturate(.9) contrast(1.08)}
+.identity-page .gallery .photo,.identity-page .profile .photo,.identity-page .prompt-feature .photo,.identity-page .community-proof .photo,.identity-page .kaku-origin .photo{border-color:rgba(255,255,255,.55)}
+.identity-page .photo:after{background:var(--kaku-violet-deep);border-color:var(--kaku-aqua);color:var(--kaku-aqua)}
+.identity-page .button,.mobile-cta{background:var(--kaku-acid);border-color:var(--kaku-acid);color:var(--kaku-violet-deep);box-shadow:5px 5px 0 var(--kaku-hot)}
+.identity-page .button:hover,.mobile-cta:hover{background:white;color:var(--kaku-violet-deep);box-shadow:8px 8px 0 var(--kaku-hot)}
+.identity-page blockquote{border-color:var(--kaku-acid);box-shadow:-4px 0 0 var(--kaku-hot)}
+
+footer{
+  background:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(102,246,255,.03) 1px,transparent 1px),
+    var(--kaku-violet-deep);
+  background-size:48px 48px;
+  border-top:8px solid var(--kaku-hot);
+}
+footer strong{color:var(--kaku-acid)}
+
+@media(max-width:1000px){
+  .identity-inner-hero{min-height:650px}
+  .identity-inner-hero h1{max-width:760px}
+}
+@media(max-width:650px){
+  header{height:68px}
+  .identity-inner-hero{min-height:660px;padding-top:105px;border-bottom-width:8px}
+  .identity-inner-hero h1{font-size:56px;max-width:88%}
+  .identity-inner-hero>p:not(.eyebrow){font-size:16px;max-width:76%}
+  .identity-page .workshop-grid article,.identity-page .community-grid article,.identity-page .enterprise-grid article{min-height:390px}
+  .identity-page .photo{box-shadow:8px 8px 0 var(--kaku-acid)}
+  .mobile-cta{background:var(--kaku-acid);color:var(--kaku-violet-deep)}
+}
