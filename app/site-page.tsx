@@ -336,3 +336,4 @@ export function SitePage({page,initialLang="en"}:{page:string;initialLang?:Lang}
  switch(page){case"forum":body=<Forum/>;break;case"workshops":body=<Workshops/>;break;case"ai-prompt-thinking":body=<AiPromptThinking/>;break;case"membership":body=<Membership/>;break;case"community":body=<Community/>;break;case"calendar":body=<Calendar/>;break;case"pulse":body=<Pulse/>;break;case"enterprise":body=<Enterprise/>;break;case"about":body=<About/>;break;default:body=<Home/>}
  return <LanguageContext.Provider value={{lang,setLang}}><Header/><main className={`identity-page identity-page-${page}`}>{body}</main><Footer/><a className="mobile-cta" href={FORUM_AIR_REGISTRATION_URL} target="_blank" rel="noreferrer">{lang==="zh"?"报名参加 Forum AIR":"Register for Forum AIR"} ↗</a></LanguageContext.Provider>;
 }
+
