@@ -22,7 +22,6 @@ const localPath = (path:string, lang:Lang) => withBase(lang === "zh" ? `/zh${pat
 const KAKU_365_PAYMENT_URL = "https://fgj4h8mrk8.sg.larksuite.com/share/base/form/shrlgOqgSh5gOey0V4RbRhf0R6c";
 const FORUM_AIR_REGISTRATION_URL = "https://fgj4h8mrk8.sg.larksuite.com/share/base/form/shrlgvDOScY0lhvGzOraLkmKNgb";
 const KAKU_GOOGLE_CALENDAR_URL = "https://calendar.google.com/calendar/u/0?cid=Y18yZDUyODFhYWFiZDk3NjFhZmUwYWY5Mjc3N2YzMDg4MDgxYWI2MjA1NDYzMzFmMWJmMzZhMjZkYWYzZDBkODk4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20";
-const KAKU_GOOGLE_CALENDAR_EMBED_URL = "https://calendar.google.com/calendar/embed?src=c_2d5281aabd9761afe0af92777f3088081ab620546331f1bf36a26daf3d0d898%40group.calendar.google.com&ctz=Asia%2FKuala_Lumpur&mode=MONTH&showTitle=0&showPrint=0&showCalendars=0&showTz=0";
 
 const pageData: Record<string, { eyebrow: [string,string]; title: [string,string]; lead: [string,string] }> = {
   forum: { eyebrow: ["CST AI Forum AIR #01","CST AI Forum AIR #01"], title: ["The conversation Malaysia needs about AI.","马来西亚需要的一场 AI 对话。"], lead: ["A podcast-style community forum exploring AI Reality, Opportunity, Challenges and Readiness—through real experiences, not hype.","一个播客式社群论坛，从真实经验出发，共同探讨 AI 现实、机遇、挑战与就绪能力，而不是追逐炒作。"] },
@@ -209,20 +208,17 @@ function MonthlyCalendar({visibleEvents,lang}:{visibleEvents:typeof events;lang:
  </section>;
 }
 
-function LiveGoogleCalendar({lang}:{lang:Lang}) {
- return <section className="month-calendar live-calendar" aria-label={lang==="zh"?"Kaku Google 实时活动日历":"Live Kaku Google Calendar"}>
-  <div className="month-toolbar"><div><span className="eyebrow">{lang==="zh"?"实时活动日历":"LIVE EVENT CALENDAR"}</span><h2>{lang==="zh"?"Kaku 本月活动":"What’s happening in Kaku"}</h2><p>{lang==="zh"?"下方内容直接同步至 Kaku Google Calendar；新增、改期或取消的活动会自动更新。":"This view is connected directly to the Kaku Google Calendar. New, rescheduled and cancelled events update automatically."}</p></div><a className="button dark-button" href={KAKU_GOOGLE_CALENDAR_URL} target="_blank" rel="noreferrer">{lang==="zh"?"在 Google Calendar 查看":"Open Google Calendar"} ↗</a></div>
-  <div className="google-calendar-frame"><iframe src={KAKU_GOOGLE_CALENDAR_EMBED_URL} title={lang==="zh"?"Kaku 实时 Google 活动日历":"Live Kaku Google Calendar"} loading="lazy" /></div>
-  <div className="calendar-contact"><span>🐵</span><p>{lang==="zh"?"想预留座位？请私讯 Anna：018-660 6731。部分活动已满额；Chimps 会员可享有指定活动的免费席位或专属优惠价。":"Want to reserve a seat? PM Anna at 018-660 6731. Some events may be fully booked; selected events include complimentary seats or exclusive Chimps member rates."}</p><a href="https://wa.me/60186606731" target="_blank" rel="noreferrer">WhatsApp Anna ↗</a></div>
- </section>;
-}
-
 function Calendar() {
  const {lang}=useLanguage();
  const [filter,setFilter]=useState("All");
+ const [calendarEvents,setCalendarEvents]=useState<CalendarEvent[]>(events);
+ const [synced,setSynced]=useState(false);
  const categories=["AI for All","AI for Skills","AI for Business and Works","Community and Life Interests"];
- const filtered=events.filter(e=>filter==="All"||e.category===filter);
- return <><InnerHero page="calendar"/><section className="calendar-section"><div className="filters">{["All",...categories].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f==="All"?(lang==="zh"?"所有活动":"All events"):(lang==="zh"?categoryZh[f]:f)}</button>)}</div><div className="calendar-grid">{filtered.map(e=><EventCard key={`${e.iso}-${e.title}-${e.time}`} e={e}/>)}</div><LiveGoogleCalendar lang={lang}/></section></>;
+ useEffect(()=>{
+   fetch(withBase("/calendar-events.json"),{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject()).then((data:CalendarEvent[])=>{if(Array.isArray(data)&&data.length){setCalendarEvents(data);setSynced(true)}}).catch(()=>{});
+ },[]);
+ const filtered=calendarEvents.filter(e=>filter==="All"||e.category===filter);
+ return <><InnerHero page="calendar"/><section className="calendar-section"><div className="calendar-live-bar"><div><span className={`sync-dot ${synced?"active":""}`}/><p><strong>{lang==="zh"?"Kaku Google Calendar 已连接":"Connected to Kaku Google Calendar"}</strong><small>{lang==="zh"?"后台更新会自动同步，网页仍使用 Ka-Ku 原本设计。":"Backend updates sync automatically while the website keeps the original Ka-Ku design."}</small></p></div><a href={KAKU_GOOGLE_CALENDAR_URL} target="_blank" rel="noreferrer">{lang==="zh"?"查看 Google Calendar":"View Google Calendar"} ↗</a></div><div className="filters">{["All",...categories].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f==="All"?(lang==="zh"?"所有活动":"All events"):(lang==="zh"?categoryZh[f]:f)}</button>)}</div><div className="calendar-grid">{filtered.map(e=><EventCard key={`${e.iso}-${e.title}-${e.time}`} e={e}/>)}</div><MonthlyCalendar visibleEvents={filtered} lang={lang}/><div className="calendar-contact"><span>🐵</span><p>{lang==="zh"?"想预留座位？请私讯 Anna：018-660 6731。部分活动已满额；Chimps 会员可享有指定活动的免费席位或专属优惠价。":"Want to reserve a seat? PM Anna at 018-660 6731. Some events may be fully booked; selected events include complimentary seats or exclusive Chimps member rates."}</p><a href="https://wa.me/60186606731" target="_blank" rel="noreferrer">WhatsApp Anna ↗</a></div></section></>;
 }
 
 function Pulse() {

@@ -1,0 +1,150 @@
+[
+  {
+    "category": "AI for All",
+    "iso": "2026-07-25",
+    "date": "25 JUL",
+    "time": "12:00–4:00 PM",
+    "title": "CST AI Forum AIR #01",
+    "copy": "Reality, opportunity, challenges and readiness."
+  },
+  {
+    "category": "AI for All",
+    "iso": "2026-07-25",
+    "date": "25 JUL",
+    "time": "8:00–11:00 AM",
+    "title": "Practical AI for Everyday Work",
+    "copy": "Fundamentals, prompting and useful daily workflows."
+  },
+  {
+    "category": "AI for Skills",
+    "iso": "2026-08-02",
+    "date": "02 AUG",
+    "time": "8:00–9:00 PM",
+    "title": "Kaku AI Onboarding",
+    "copy": "Meet the people, calendar, resources and pathways."
+  },
+  {
+    "category": "AI for Business and Works",
+    "iso": "2026-08-03",
+    "date": "03 AUG",
+    "time": "Full day",
+    "title": "BiggIns · Full Scale Traders — Day 1",
+    "copy": "Trend-trading strategy and risk-management intensive."
+  },
+  {
+    "category": "AI for Business and Works",
+    "iso": "2026-08-04",
+    "date": "04 AUG",
+    "time": "Full day",
+    "title": "BiggIns · Full Scale Traders — Day 2",
+    "copy": "Continue the two-day strategy and risk-management intensive."
+  },
+  {
+    "category": "AI for Business and Works",
+    "iso": "2026-08-07",
+    "date": "07 AUG",
+    "time": "Time TBA",
+    "title": "BiggIns · Live Trading Gathering",
+    "copy": "Observe the market, exchange decisions and learn through live practice."
+  },
+  {
+    "category": "AI for Skills",
+    "iso": "2026-08-07",
+    "date": "07 AUG",
+    "time": "7:00–10:00 PM",
+    "title": "AI Prompt Thinking Workshop",
+    "copy": "Move from chat and prompts to loops, meta-prompting and reusable AI thinking."
+  },
+  {
+    "category": "AI for Skills",
+    "iso": "2026-08-08",
+    "date": "08 AUG",
+    "time": "9:00 AM–12:00 PM",
+    "title": "AI Prompt Thinking Workshop",
+    "copy": "Move from chat and prompts to loops, meta-prompting and reusable AI thinking."
+  },
+  {
+    "category": "AI for Business and Works",
+    "iso": "2026-08-09",
+    "date": "09 AUG",
+    "time": "2:00–3:00 PM",
+    "title": "Vibe Coding: Build a Website",
+    "copy": "A one-hour community speaker session."
+  },
+  {
+    "category": "AI for Business and Works",
+    "iso": "2026-08-12",
+    "date": "12 AUG",
+    "time": "Time TBA",
+    "title": "BiggIns · Preview Class",
+    "copy": "Discover the AI-ready trader foundation and the 1% learning pathway."
+  },
+  {
+    "category": "Community and Life Interests",
+    "iso": "2026-08-16",
+    "date": "16 AUG",
+    "time": "2:00–4:00 PM",
+    "title": "Lunavera Crossover · Signature Scent Experience",
+    "copy": "Make your own perfume and explore scent as personal expression.",
+    "href": "https://lunavera.space/"
+  },
+  {
+    "category": "Community and Life Interests",
+    "iso": "2026-08-16",
+    "date": "16 AUG",
+    "time": "8:00–9:00 PM",
+    "title": "Prompt Jam",
+    "copy": "Bring one problem. Build and compare prompt loops."
+  },
+  {
+    "category": "Community and Life Interests",
+    "iso": "2026-08-18",
+    "date": "18 AUG",
+    "time": "8:00–10:00 PM",
+    "title": "Lunavera Crossover · Wine Yoga",
+    "copy": "Connect and destress through a relaxed shared yoga experience.",
+    "href": "https://lunavera.space/"
+  },
+  {
+    "category": "AI for Business and Works",
+    "iso": "2026-08-19",
+    "date": "19 AUG",
+    "time": "Time TBA",
+    "title": "BiggIns · AI Trader Foundation — The 1% Playbook",
+    "copy": "Master the Basics. Trade Smarter. Become AI-Ready."
+  },
+  {
+    "category": "AI for Skills",
+    "iso": "2026-08-22",
+    "date": "22 AUG",
+    "time": "9:00 AM–12:00 PM",
+    "title": "AI Prompt Thinking Workshop",
+    "copy": "Move from chat and prompts to loops, meta-prompting and reusable AI thinking."
+  },
+  {
+    "category": "Community and Life Interests",
+    "iso": "2026-08-23",
+    "date": "23 AUG",
+    "time": "8:00–10:00 AM",
+    "title": "Lunavera Crossover · Forest Bath Yoga",
+    "copy": "Reconnect and destress through forest bathing and yoga.",
+    "href": "https://lunavera.space/"
+  },
+  {
+    "category": "AI for Business and Works",
+    "iso": "2026-08-26",
+    "date": "26 AUG",
+    "time": "Time TBA",
+    "title": "BiggIns · Preview Class",
+    "copy": "Discover the AI-ready trader foundation and the 1% learning pathway."
+  },
+  {
+    "category": "Community and Life Interests",
+    "iso": "2026-08-27",
+    "date": "27 AUG",
+    "time": "2:00–4:00 PM",
+    "title": "Lunavera Crossover · Coffee Tasting Experience",
+    "copy": "Know your beans and make your own coffee drip bag.",
+    "href": "https://lunavera.space/"
+  }
+]
