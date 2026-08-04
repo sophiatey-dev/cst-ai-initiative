@@ -1,6 +1,6 @@
 import { SitePage } from "../../site-page";
 
-const pages = ["forum", "workshops", "membership", "community", "calendar", "pulse", "speakers", "enterprise", "about"];
+const pages = ["forum", "workshops", "ai-prompt-thinking", "membership", "community", "calendar", "pulse", "speakers", "enterprise", "about"];
 
 export function generateStaticParams() {
   return pages.map((slug) => ({ slug }));
