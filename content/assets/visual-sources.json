@@ -1,0 +1,24 @@
+{
+  "updated": "2026-08-04",
+  "priority": "Prefer authentic CST and Sophia assets before generated placeholders.",
+  "sources": [
+    {
+      "id": "1kiRWJ88zfHD-0j4HTdKmPgupM8P1ua-a",
+      "name": "CST 实战培训",
+      "url": "https://drive.google.com/drive/folders/1kiRWJ88zfHD-0j4HTdKmPgupM8P1ua-a",
+      "use": ["Sophia", "brand", "events", "workshops", "community", "backgrounds"]
+    },
+    {
+      "id": "13j_IMPSTHAkfayy8yCrvCtc2tk8b6XzN",
+      "name": "02 Summit 学习峰会",
+      "url": "https://drive.google.com/drive/folders/13j_IMPSTHAkfayy8yCrvCtc2tk8b6XzN",
+      "use": ["summits", "leadership", "audience", "stage", "networking", "event credibility"]
+    },
+    {
+      "id": "13jODDt8ObtXjcXD9bMLqnZCi5JdmlzI4",
+      "name": "01 Camp 实战营",
+      "url": "https://drive.google.com/drive/folders/13jODDt8ObtXjcXD9bMLqnZCi5JdmlzI4",
+      "use": ["learning", "transformation", "teamwork", "reflection", "human connection", "concept visuals"]
+    }
+  ]
+}

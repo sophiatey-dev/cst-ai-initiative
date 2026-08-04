@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Training Proposal — Vision Building</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:       #0B0F1A;
+    --ink-2:     #111827;
+    --ink-3:     #1A2235;
+    --ink-4:     #222E42;
+    --gold:      #C9952A;
+    --gold-lt:   #E2B455;
+    --gold-dim:  rgba(201,149,42,0.18);
+    --gold-line: rgba(201,149,42,0.35);
+    --cream:     #F4F0E8;
+    --cream-dim: #D6CEBC;
+    --white:     #FFFFFF;
+    --muted:     rgba(244,240,232,0.50);
+    --muted2:    rgba(244,240,232,0.25);
+    --blue-acc:  #2563EB;
+    --teal-acc:  #0E8A74;
+    --rule:      rgba(201,149,42,0.22);
+    --r-sm: 4px;
+    --r-md: 8px;
+    --r-lg: 14px;
+    --r-xl: 22px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--ink);
+    color: var(--cream);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+
+  /* ─── UTILITIES ─── */
+  .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .serif { font-family: 'Playfair Display', serif; }
+  .gold { color: var(--gold-lt); }
+  .rule { border: none; border-top: 1px solid var(--rule); margin: 32px 0; }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--gold-line);
+    color: var(--gold-lt);
+    background: var(--gold-dim);
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0B0F1A 0%, #111827 55%, #0F1C2D 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,149,42,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-lt), var(--gold), transparent);
+  }
+  .cover-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .cover-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+  }
+  .cover-brand-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+  .cover-doc-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--white);
+    max-width: 780px;
+    margin-bottom: 24px;
+  }
+  .cover-title em { color: var(--gold-lt); font-style: italic; }
+  .cover-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 56px;
+    line-height: 1.7;
+  }
+  .cover-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    max-width: 700px;
+  }
+  .cover-meta-item {
+    background: rgba(255,255,255,0.03);
+    padding: 16px 20px;
+  }
+  .cover-meta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .cover-meta-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cream);
+  }
+  .cover-meta-val.accent { color: var(--gold-lt); }
+  .cover-scroll {
+    position: absolute;
+    bottom: 30px;
+    right: 80px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cover-scroll::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--muted2);
+  }
+
+  /* ─── NAV STRIP ─── */
+  .nav-strip {
+    background: var(--ink-2);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 80px;
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-strip a {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color .2s, border-color .2s;
+  }
+  .nav-strip a:hover { color: var(--gold-lt); border-bottom-color: var(--gold); }
+
+  /* ─── SECTION WRAPPER ─── */
+  .section {
+    padding: 80px 80px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section:last-child { border-bottom: none; }
+  .sec-header { margin-bottom: 48px; }
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .sec-sub {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 680px;
+    line-height: 1.75;
+  }
+
+  /* ─── CONTEXT / WHY ─── */
+  .context-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .context-card {
+    background: var(--ink-3);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-lg);
+    padding: 28px 30px;
+  }
+  .context-card-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .context-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .context-card-body {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .context-callout {
+    margin-top: 24px;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-line);
+    border-radius: var(--r-lg);
+    padding: 24px 30px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .context-callout-bar {
+    width: 3px;
+    min-height: 40px;
+    background: var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .context-callout-text {
+    font-size: 14px;
+    color: var(--cream);
+    line-height: 1.75;
+    font-style: italic;
+  }
+  .context-callout-text strong { color: var(--gold-lt); font-style: normal; }
+
+  /* ─── PROGRAM COMPARE ─── */
+  .program-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 40px;
+  }
+  .program-card {
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+  }
+  .program-card.p3 { border-color: rgba(201,149,42,0.4); }
+  .program-card.p5 { border-color: rgba(14,138,116,0.5); background: linear-gradient(180deg, #0D1A18 0%, var(--ink-2) 100%); }
+  .prog-header {
+    padding: 28px 32px 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .program-card.p3 .prog-header { background: linear-gradient(135deg, #1A1608 0%, #1C1A0F 100%); }
+  .program-card.p5 .prog-header { background: linear-gradient(135deg, #081A16 0%, #0F2020 100%); }
+  .prog-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+  .p3 .prog-badge { background: var(--gold-dim); color: var(--gold-lt); border: 1px solid var(--gold-line); }
+  .p5 .prog-badge { background: rgba(14,138,116,0.15); color: #4EC9B0; border: 1px solid rgba(14,138,116,0.3); }
+  .prog-days {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .p3 .prog-days { color: var(--gold-lt); }
+  .p5 .prog-days { color: #4EC9B0; }
+  .prog-days-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .prog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .prog-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .prog-body { padding: 28px 32px; flex: 1; }
+  .prog-body-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .prog-modules { display: flex; flex-direction: column; gap: 10px; }
+  .module-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.03);
+    border-radius: var(--r-md);
+    border-left: 3px solid transparent;
+  }
+  .p3 .module-row { border-left-color: rgba(201,149,42,0.4); }
+  .p5 .module-row { border-left-color: rgba(14,138,116,0.35); }
+  .module-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted2);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .module-content {}
+  .module-name {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 3px;
+  }
+  .module-subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .module-row.exclusive { background: rgba(201,149,42,0.05); }
+  .p5 .module-row.exclusive { background: rgba(14,138,116,0.07); }
+  .exclusive-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .p5-only { background: rgba(14,138,116,0.15); color: #4EC9B0; }
+  .prog-footer {
+    padding: 20px 32px;
+    border-top: 1px solid var(--rule);
+    background: rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .prog-ideal {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .prog-ideal strong { color: var(--cream); }
+  .prog-hrdcorp {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: .1em;
+  }
+
+  /* ─── MODULE DEEP DIVE ─── */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .mod-card {
+    background: var(--ink-3);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-lg);
+    padding: 24px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mod-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .mod-card.c-gold::before { background: linear-gradient(90deg, var(--gold), var(--gold-lt)); }
+  .mod-card.c-teal::before { background: linear-gradient(90deg, #0E8A74, #4EC9B0); }
+  .mod-card.c-blue::before { background: linear-gradient(90deg, #2563EB, #60A5FA); }
+  .mod-card.c-violet::before { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
+  .mod-card.c-rose::before { background: linear-gradient(90deg, #BE123C, #FB7185); }
+  .mod-card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .14em;
+    color: var(--muted2);
+    margin-bottom: 10px;
+  }
+  .mod-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .mod-card-sub {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .mod-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .mod-bullets li {
+    font-size: 12.5px;
+    color: var(--cream-dim);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .mod-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+  }
+  .mod-card-tag {
+    margin-top: 14px;
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: var(--gold-dim);
+    color: var(--gold);
+    border: 1px solid var(--gold-line);
+  }
+  .mod-card-tag.teal { background: rgba(14,138,116,0.12); color: #4EC9B0; border-color: rgba(14,138,116,0.25); }
+  .mod-card-tag.blue { background: rgba(37,99,235,0.12); color: #60A5FA; border-color: rgba(37,99,235,0.25); }
+  .mod-card-tag.violet { background: rgba(124,58,237,0.12); color: #A78BFA; border-color: rgba(124,58,237,0.25); }
+  .mod-card-tag.rose { background: rgba(190,18,60,0.12); color: #FB7185; border-color: rgba(190,18,60,0.25); }
+  .p5-exclusive-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 0;
+  }
+  .p5-banner {
+    background: rgba(14,138,116,0.08);
+    border: 1px solid rgba(14,138,116,0.25);
+    border-radius: var(--r-md);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .p5-banner-dot { width: 8px; height: 8px; border-radius: 50%; background: #4EC9B0; flex-shrink: 0; }
+  .p5-banner-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #4EC9B0;
+  }
+
+  /* ─── SCHEDULE TABLE ─── */
+  .schedule-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .schedule-head {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.04);
+    border-radius: var(--r-sm) var(--r-sm) 0 0;
+    border: 1px solid var(--rule);
+    border-bottom: none;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sched-badge {
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+  .sched-gold { background: var(--gold-dim); color: var(--gold-lt); }
+  .sched-teal { background: rgba(14,138,116,0.15); color: #4EC9B0; }
+  .schedule-table { width: 100%; border-collapse: collapse; border: 1px solid var(--rule); border-radius: 0 0 var(--r-md) var(--r-md); overflow: hidden; }
+  .schedule-table th {
+    background: rgba(255,255,255,0.04);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+    font-weight: 500;
+  }
+  .schedule-table td {
+    padding: 10px 14px;
+    font-size: 12.5px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+  }
+  .schedule-table tr:last-child td { border-bottom: none; }
+  .schedule-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .sched-day {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold-lt);
+    white-space: nowrap;
+  }
+  .sched-day.teal { color: #4EC9B0; }
+  .sched-topic { font-weight: 500; color: var(--cream); }
+  .sched-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+  }
+  .sched-activity { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+  .sched-excl {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    padding: 1px 6px;
+    border-radius: 2px;
+    background: rgba(14,138,116,0.15);
+    color: #4EC9B0;
+    margin-left: 6px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  /* ─── OUTCOMES ─── */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .outcome-card {
+    background: var(--ink-3);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-lg);
+    padding: 24px;
+  }
+  .outcome-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: .4;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .outcome-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .outcome-body { font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+
+  /* ─── METHODOLOGY ─── */
+  .method-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .method-card {
+    background: var(--ink-3);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-lg);
+    padding: 22px 20px;
+    text-align: center;
+  }
+  .method-icon { font-size: 30px; margin-bottom: 12px; }
+  .method-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .method-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* ─── TRAINER ─── */
+  .trainer-wrap {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .trainer-photo-panel {
+    background: var(--ink-3);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-xl);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .trainer-photo-placeholder {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ink-4), var(--ink-3));
+    border: 2px solid var(--gold-line);
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+  .trainer-name-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .trainer-title-main {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .trainer-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .t-stat {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .t-stat-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-lt);
+    line-height: 1.1;
+  }
+  .t-stat-l {
+    font-size: 10px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+  }
+  .trainer-li-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #0077B5;
+    color: white;
+    text-decoration: none;
+    border-radius: var(--r-md);
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .03em;
+    transition: opacity .2s;
+  }
+  .trainer-li-link:hover { opacity: .85; }
+  .trainer-detail-panel {}
+  .trainer-bio {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 32px;
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+  }
+  .trainer-bio strong { color: var(--cream); }
+  .trainer-credentials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .cred-block {
+    background: var(--ink-3);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    padding: 16px 18px;
+  }
+  .cred-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .cred-items { display: flex; flex-direction: column; gap: 5px; }
+  .cred-item { font-size: 12.5px; color: var(--cream-dim); padding-left: 12px; position: relative; }
+  .cred-item::before { content: '·'; position: absolute; left: 2px; color: var(--gold); }
+  .awards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .award-pill {
+    font-size: 11px;
+    color: var(--cream-dim);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--rule);
+    border-radius: 20px;
+    padding: 5px 12px;
+  }
+  .award-pill.gold { border-color: var(--gold-line); color: var(--gold-lt); background: var(--gold-dim); }
+
+  /* ─── CLIENTS ─── */
+    .clients-marquee-wrap {
+    overflow: hidden;
+    padding: 8px 0;
+  }
+  .clients-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .client-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    color: var(--muted);
+    background: rgba(255,255,255,0.03);
+    white-space: nowrap;
+  }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    background: linear-gradient(135deg, #0F1B30 0%, #0A1220 100%);
+    border-top: 1px solid var(--gold-line);
+    padding: 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,149,42,0.06) 0%, transparent 70%);
+  }
+  .cta-inner {
+    max-width: 700px;
+    position: relative;
+  }
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.25;
+  }
+  .cta-title em { color: var(--gold-lt); font-style: italic; }
+  .cta-sub {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 40px;
+    line-height: 1.75;
+  }
+  .cta-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .cta-info-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    padding: 18px 20px;
+  }
+  .cta-info-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .cta-info-val {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+  .cta-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 24px;
+    font-style: italic;
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--ink);
+    border-top: 1px solid var(--rule);
+    padding: 32px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .footer-doc {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted2);
+    letter-spacing: .12em;
+  }
+  .footer-conf {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted2);
+    letter-spacing: .1em;
+  }
+
+  @media (max-width: 900px) {
+    .cover, .section, .footer, .cta-section { padding: 48px 32px; }
+    .nav-strip { padding: 0 32px; }
+    .cover-meta-grid { grid-template-columns: 1fr 1fr; }
+    .program-compare, .schedule-wrap, .trainer-wrap, .context-grid,
+    .modules-grid, .outcomes-grid, .p5-exclusive-row, .method-row,
+    .trainer-credentials-grid, .cta-info-grid { grid-template-columns: 1fr; }
+    .cover-scroll { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<section class="cover" id="cover">
+  <div class="cover-eyebrow">
+    <span class="cover-brand">Vision Building</span>
+    <span class="cover-brand-dot"></span>
+    <span class="cover-doc-type">Corporate Training Proposal</span>
+  </div>
+  <h1 class="cover-title">
+    Think in Systems.<br>
+    <em>Lead through Complexity.</em>
+  </h1>
+  <p class="cover-sub">
+    A structured thinking program for professionals navigating the VUCA era —
+    equipping teams with the frameworks to articulate complexity, diagnose systems,
+    and make better decisions under pressure.
+  </p>
+  <div class="cover-meta-grid">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Format A</div>
+      <div class="cover-meta-val accent">3-Day Program</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Format B</div>
+      <div class="cover-meta-val accent">5-Day Program</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Delivery</div>
+      <div class="cover-meta-val">In-House / Cohort</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">HRDCorp</div>
+      <div class="cover-meta-val">Claimable</div>
+    </div>
+  </div>
+  <div class="cover-scroll">Scroll to explore</div>
+</section>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-strip">
+  <a href="#context">Context</a>
+  <a href="#programs">Programs</a>
+  <a href="#modules">Modules</a>
+  <a href="#schedule">Schedule</a>
+  <a href="#outcomes">Outcomes</a>
+  <a href="#methodology">Methodology</a>
+  <a href="#trainer">Trainer</a>
+  <a href="#clients">Track Record</a>
+  <a href="#engage">Engage</a>
+</nav>
+
+<!-- ═══ CONTEXT ═══ -->
+<section class="section" id="context">
+  <div class="sec-header">
+    <span class="label">01 · The Business Case</span>
+    <h2 class="sec-title">Why Structured Thinking<br>Is a Survival Skill in the AI Era</h2>
+    <p class="sec-sub">Businesses are drowning in information but starving for clarity. The challenge is no longer access to data — it is the ability to make sense of it, communicate it, and act on it decisively.</p>
+  </div>
+  <div class="context-grid">
+    <div class="context-card">
+      <span class="context-card-icon">🌀</span>
+      <div class="context-card-title">The VUCA Reality</div>
+      <div class="context-card-body">Volatility, Uncertainty, Complexity, and Ambiguity have escalated. AI disruption, shifting market structures, and information overload mean the old playbook of "work harder" no longer produces results. Teams need a thinking upgrade, not just a skills refresh.</div>
+    </div>
+    <div class="context-card">
+      <span class="context-card-icon">🧩</span>
+      <div class="context-card-title">The Articulation Gap</div>
+      <div class="context-card-body">Most people can feel a problem but cannot name it with precision. When leaders and teams cannot articulate what they are observing, they cannot solve it, communicate it to stakeholders, or leverage AI tools effectively. Precision of thought precedes precision of action.</div>
+    </div>
+    <div class="context-card">
+      <span class="context-card-icon">⚙️</span>
+      <div class="context-card-title">The Systems Blindspot</div>
+      <div class="context-card-body">Most corporate training addresses isolated skills — communication, leadership, time management. But real problems are systemic. Without a systems lens, teams keep applying point solutions to structural issues, never reaching the <strong style="color:var(--cream)">root cause</strong> — and the same problems recur in different forms, different departments, different people. <strong style="color:var(--cream)">Treat the root, not the symptom.</strong></div>
+    </div>
+    <div class="context-card">
+      <span class="context-card-icon">🤖</span>
+      <div class="context-card-title">AI Readiness Requires Thinking Clarity</div>
+      <div class="context-card-body">AI tools amplify the quality of the thinking you bring to them. A team with poor context-setting will produce poor AI output. Training people to think in structured frameworks is the prerequisite to unlocking AI as a real productivity multiplier.</div>
+    </div>
+  </div>
+  <div class="context-callout">
+    <div class="context-callout-bar"></div>
+    <div class="context-callout-text">
+      <strong>"精准比努力值钱"</strong> — Precision is worth more than effort. The goal of this program is not to make your people work more. It is to make their thinking <strong>work better</strong>. One well-placed intervention in a system produces results that years of scattered effort cannot.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROGRAMS ═══ -->
+<section class="section" id="programs">
+  <div class="sec-header">
+    <span class="label">02 · Program Options</span>
+    <h2 class="sec-title">Choose Your Depth of Transformation</h2>
+    <p class="sec-sub">Two program formats designed for different organisational readiness levels. Both are fully in-house deliverable and HRDCorp claimable.</p>
+  </div>
+  <div class="program-compare">
+
+    <!-- 3-DAY -->
+    <div class="program-card p3">
+      <div class="prog-header">
+        <span class="prog-badge">Format A · Core</span>
+        <div class="prog-days">3</div>
+        <div class="prog-days-label">Full Training Days</div>
+        <div class="prog-title">Context System Thinking<br>— Foundation Track</div>
+        <div class="prog-desc">Equips your team with the essential toolkit to think structurally, communicate with precision, and identify high-impact leverage points within their domain.</div>
+      </div>
+      <div class="prog-body">
+        <span class="prog-body-label">Modules Covered</span>
+        <div class="prog-modules">
+          <div class="module-row">
+            <div class="module-num">M1</div>
+            <div class="module-content">
+              <div class="module-name">3A+P Framework</div>
+              <div class="module-subtitle">Approach · Aspect · Angle · Presupposition — the core articulation engine for clear, structured thinking and communication</div>
+            </div>
+          </div>
+          <div class="module-row">
+            <div class="module-num">M2</div>
+            <div class="module-content">
+              <div class="module-name">Structural Thinking</div>
+              <div class="module-subtitle">Donella Meadows systems framework: Elements, Interconnections, Goals — reading organisations and challenges as living systems</div>
+            </div>
+          </div>
+          <div class="module-row">
+            <div class="module-num">M3</div>
+            <div class="module-content">
+              <div class="module-name">12 Leverage Points</div>
+              <div class="module-subtitle">Where and how to intervene in a system for maximum impact — structural, feedback, and paradigm-level change</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prog-footer">
+        <div class="prog-ideal"><strong>Ideal for:</strong> Leadership teams, managers, cross-functional teams</div>
+        <div class="prog-hrdcorp">HRDCorp ✓</div>
+      </div>
+    </div>
+
+    <!-- 5-DAY -->
+    <div class="program-card p5">
+      <div class="prog-header">
+        <span class="prog-badge">Format B · Immersive</span>
+        <div class="prog-days">5</div>
+        <div class="prog-days-label">Full Training Days</div>
+        <div class="prog-title">Context System Thinking<br>— Advanced Decision Track</div>
+        <div class="prog-desc">The complete transformation program — from structured thinking foundations through live decision dilemma processing and building a self-sustaining team learning community.</div>
+      </div>
+      <div class="prog-body">
+        <span class="prog-body-label">All 3 Core Modules + 2 Advanced Modules</span>
+        <div class="prog-modules">
+          <div class="module-row">
+            <div class="module-num">M1</div>
+            <div class="module-content">
+              <div class="module-name">3A+P Framework</div>
+              <div class="module-subtitle">Approach · Aspect · Angle · Presupposition — the core articulation engine for clear, structured thinking and communication</div>
+            </div>
+          </div>
+          <div class="module-row">
+            <div class="module-num">M2</div>
+            <div class="module-content">
+              <div class="module-name">Structural Thinking</div>
+              <div class="module-subtitle">Donella Meadows systems framework: Elements, Interconnections, Goals — reading organisations and challenges as living systems</div>
+            </div>
+          </div>
+          <div class="module-row">
+            <div class="module-num">M3</div>
+            <div class="module-content">
+              <div class="module-name">12 Leverage Points</div>
+              <div class="module-subtitle">Where and how to intervene in a system for maximum impact — structural, feedback, and paradigm-level change</div>
+            </div>
+          </div>
+          <div class="module-row exclusive">
+            <div class="module-num">M4</div>
+            <div class="module-content">
+              <div class="module-name">Decision in Dilemma <span class="exclusive-label p5-only">5-Day Only</span></div>
+              <div class="module-subtitle">Live structured dialogue on real workplace and strategic dilemmas — turning uncertainty into decision intelligence</div>
+            </div>
+          </div>
+          <div class="module-row exclusive">
+            <div class="module-num">M5</div>
+            <div class="module-content">
+              <div class="module-name">Self-Organise Community <span class="exclusive-label p5-only">5-Day Only</span></div>
+              <div class="module-subtitle">Design a self-sustaining team learning ecosystem using emergence principles — teams that grow without constant top-down management</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prog-footer">
+        <div class="prog-ideal"><strong>Ideal for:</strong> Senior leaders, high-potential cohorts, organisation-wide culture change</div>
+        <div class="prog-hrdcorp">HRDCorp ✓</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ MODULE DEEP DIVE ═══ -->
+<section class="section" id="modules">
+  <div class="sec-header">
+    <span class="label">03 · Module Breakdown</span>
+    <h2 class="sec-title">What Participants Learn,<br>Module by Module</h2>
+    <p class="sec-sub">Each module builds on the last, creating a cumulative system of thinking tools that participants can apply immediately in their work context.</p>
+  </div>
+
+  <div class="modules-grid">
+
+    <div class="mod-card c-gold">
+      <div class="mod-card-num">Module 01 · Both Programs</div>
+      <div class="mod-card-title">3A+P Framework —<br>The Articulation Engine</div>
+      <div class="mod-card-sub">Coach Sophia Tey's proprietary framework for structured thinking. Before you can solve a problem, you must articulate it precisely. Before you can persuade, you must construct. 3A+P is that construction tool.</div>
+      <ul class="mod-bullets">
+        <li><strong>Approach</strong> — How you enter a problem or conversation</li>
+        <li><strong>Aspect</strong> — The dimensions you choose to observe</li>
+        <li><strong>Angle</strong> — The specific perspective you take</li>
+        <li><strong>Presupposition</strong> — The unstated assumptions shaping your view</li>
+        <li>Apply 3A+P to real workplace communication challenges</li>
+        <li>Use as a prompt thinking structure for AI tools</li>
+      </ul>
+      <span class="mod-card-tag">Core Framework</span>
+    </div>
+
+    <div class="mod-card c-blue">
+      <div class="mod-card-num">Module 02 · Both Programs</div>
+      <div class="mod-card-title">Structural Thinking —<br>See the Whole System</div>
+      <div class="mod-card-sub">Based on Donella Meadows' <em>Thinking in Systems</em>. Most people manage symptoms. Structural thinkers diagnose systems. This module trains participants to see their organisation as a living, dynamic system.</div>
+      <ul class="mod-bullets">
+        <li>Elements, Interconnections, and Goals — the system anatomy</li>
+        <li>Stocks, flows, and feedback loops in organisational context</li>
+        <li>Identifying system archetypes: "Fixes that Fail", "Tragedy of the Commons"</li>
+        <li>Why smart people make counterintuitive decisions</li>
+        <li>Mapping your team or business unit as a system</li>
+        <li>Resilience vs. efficiency trade-offs in team design</li>
+      </ul>
+      <span class="mod-card-tag blue">Meadows Framework</span>
+    </div>
+
+    <div class="mod-card c-violet">
+      <div class="mod-card-num">Module 03 · Both Programs</div>
+      <div class="mod-card-title">12 Leverage Points —<br>Where Power Lives in a System</div>
+      <div class="mod-card-sub">Meadows identified 12 places to intervene in a system, ordered by effectiveness. Most organisations intervene at the lowest leverage levels — numbers and rules. This module teaches where high-impact change actually lives.</div>
+      <ul class="mod-bullets">
+        <li>Structural layer: numbers, buffers, physical structure</li>
+        <li>Feedback layer: information flows, loop strength, delays</li>
+        <li>Paradigm layer: goals, mindsets, and transcending paradigms</li>
+        <li>Mapping current team interventions on the leverage scale</li>
+        <li>Identifying the highest-leverage change your organisation can make</li>
+        <li>Why most strategic plans operate at leverage point #12</li>
+      </ul>
+      <span class="mod-card-tag violet">Systems Intervention</span>
+    </div>
+
+  </div>
+
+  <div class="p5-banner">
+    <div class="p5-banner-dot"></div>
+    <div class="p5-banner-text">5-Day Program — Advanced Modules (M4 &amp; M5)</div>
+  </div>
+
+  <div class="p5-exclusive-row">
+
+    <div class="mod-card c-teal">
+      <div class="mod-card-num">Module 04 · 5-Day Only</div>
+      <div class="mod-card-title">Decision in Dilemma —<br>The Live Decision Lab</div>
+      <div class="mod-card-sub">Real decisions under real pressure. Participants bring genuine workplace or strategic dilemmas to a facilitated dialogue format. No scripts, no rehearsed answers — structured real-time decision processing.</div>
+      <ul class="mod-bullets">
+        <li>The 1+1+1 dialogue format: Facilitator + Challenger + Decision-Maker</li>
+        <li>Dilemma mapping using the 3A+P and Systems lens</li>
+        <li>Kahneman System 1 vs System 2 in decision-making contexts</li>
+        <li>Cognitive biases that derail good decisions</li>
+        <li>Building your personal Decision Intelligence framework</li>
+        <li>Group debrief: extracting transferable learning from each case</li>
+      </ul>
+      <span class="mod-card-tag teal">Decision Intelligence</span>
+    </div>
+
+    <div class="mod-card c-rose">
+      <div class="mod-card-num">Module 05 · 5-Day Only</div>
+      <div class="mod-card-title">Self-Organise Community —<br>Teams That Grow Themselves</div>
+      <div class="mod-card-sub">The final module answers: how do you sustain the learning after training ends? Based on emergence and self-organisation principles, participants design a living team learning ecosystem that does not require constant top-down management.</div>
+      <ul class="mod-bullets">
+        <li>Why most training fails: the transfer problem</li>
+        <li>Emergence and self-organisation in team design</li>
+        <li>Designing community structures with intrinsic motivation loops</li>
+      </ul>
+      <span class="mod-card-tag rose">Community Design</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SCHEDULE ═══ -->
+<section class="section" id="schedule">
+  <div class="sec-header">
+    <span class="label">04 · Program Schedule</span>
+    <h2 class="sec-title">Day-by-Day Flow</h2>
+    <p class="sec-sub">Each day is designed with a deliberate arc: concept introduction, contextualisation, practical application, and reflection. No filler sessions.</p>
+  </div>
+  <div class="schedule-wrap">
+
+    <!-- 3-Day -->
+    <div>
+      <div class="schedule-head">
+        3-Day Program — Foundation Track
+        <span class="sched-badge sched-gold">Format A</span>
+      </div>
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Focus</th>
+            <th>Sessions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="sched-day">Day 1</div></td>
+            <td>
+              <div class="sched-topic">3A+P Framework</div>
+              <div class="sched-activity">Articulation as a thinking system</div>
+            </td>
+            <td>
+              <div class="sched-time">Morning</div>
+              <div class="sched-activity">Introduction to Articulation · Why context is the problem</div>
+              <div class="sced-time" style="margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)">Afternoon</div>
+              <div class="sched-activity">3A+P Deep Dive · Live application to real cases</div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="sched-day">Day 2</div></td>
+            <td>
+              <div class="sched-topic">Structural Thinking</div>
+              <div class="sched-activity">Systems as the unit of analysis</div>
+            </td>
+            <td>
+              <div class="sched-time">Morning</div>
+              <div class="sched-activity">Linear thinking vs structural thinking</div>
+              <div class="sced-time" style="margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)">Afternoon</div>
+              <div class="sched-activity">Meadows framework · Elements, interconnections, goals</div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="sched-day">Day 3</div></td>
+            <td>
+              <div class="sched-topic">12 Leverage Points</div>
+              <div class="sched-activity">High-impact intervention design</div>
+            </td>
+            <td>
+              <div class="sched-time">Morning</div>
+              <div class="sched-activity">Leverage point hierarchy · Structural vs paradigm layer</div>
+              <div class="sced-time" style="margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)">Afternoon</div>
+              <div class="sched-activity">Team intervention mapping · Action planning · Graduation</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 5-Day -->
+    <div>
+      <div class="schedule-head">
+        5-Day Program — Advanced Decision Track
+        <span class="sched-badge sched-teal">Format B</span>
+      </div>
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Focus</th>
+            <th>Sessions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="sched-day teal">Day 1</div></td>
+            <td>
+              <div class="sched-topic">3A+P Framework</div>
+              <div class="sched-activity">Context as the competitive edge</div>
+            </td>
+            <td>
+              <div class="sched-time">Morning · Afternoon</div>
+              <div class="sched-activity">Full 3A+P immersion · Advanced case application</div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="sched-day teal">Day 2</div></td>
+            <td>
+              <div class="sched-topic">Structural Thinking</div>
+              <div class="sched-activity">Seeing systems, not symptoms</div>
+            </td>
+            <td>
+              <div class="sched-time">Morning</div>
+              <div class="sched-activity">Linear thinking vs structural thinking</div>
+              <div class="sced-time" style="margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)">Afternoon</div>
+              <div class="sched-activity">Meadows framework · Elements, interconnections, goals</div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="sched-day teal">Day 3</div></td>
+            <td>
+              <div class="sched-topic">12 Leverage Points</div>
+              <div class="sched-activity">Strategic intervention architecture</div>
+            </td>
+            <td>
+              <div class="sched-time">Morning · Afternoon</div>
+              <div class="sched-activity">Leverage mapping · Organisation-wide intervention design</div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="sched-day teal">Day 4</div></td>
+            <td>
+              <div class="sched-topic">Decision in Dilemma <span class="sched-excl">Adv.</span></div>
+              <div class="sched-activity">Live decision intelligence lab</div>
+            </td>
+            <td>
+              <div class="sched-time">Morning</div>
+              <div class="sched-activity">Decision Intelligence framework · Cognitive bias mapping</div>
+              <div class="sced-time" style="margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)">Afternoon</div>
+              <div class="sched-activity">Live DID sessions with real participant dilemmas</div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="sched-day teal">Day 5</div></td>
+            <td>
+              <div class="sched-topic">Self-Organise Community <span class="sched-excl">Adv.</span></div>
+              <div class="sched-activity">Sustaining transformation</div>
+            </td>
+            <td>
+              <div class="sched-time">Morning</div>
+              <div class="sched-activity">Community architecture design · Emergence principles</div>
+              <div class="sced-time" style="margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)">Afternoon</div>
+              <div class="sched-activity">Applied community design workshop · Peer presentations</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ OUTCOMES ═══ -->
+<section class="section" id="outcomes">
+  <div class="sec-header">
+    <span class="label">05 · Learning Outcomes</span>
+    <h2 class="sec-title">What Your Organisation<br>Walks Away With</h2>
+    <p class="sec-sub">Outcomes are measured not by test scores, but by observable changes in how your people think, communicate, and decide.</p>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-num">01</div>
+      <div class="outcome-title">A Shared Thinking Language</div>
+      <div class="outcome-body">Teams develop a common vocabulary for articulating problems, opportunities, and ideas — reducing miscommunication and meeting inefficiency across departments.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">02</div>
+      <div class="outcome-title">Structural Problem Diagnosis</div>
+      <div class="outcome-body">Participants move from reactive symptom-fixing to proactive system diagnosis. They can identify where a problem originates in a system before applying solutions.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">03</div>
+      <div class="outcome-title">High-Impact Prioritisation</div>
+      <div class="outcome-body">Using the 12 Leverage Points framework, teams learn to distinguish high-leverage actions from busy work — redirecting energy to changes that actually move the needle.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">04</div>
+      <div class="outcome-title">Decision Intelligence</div>
+      <div class="outcome-body">(5-Day) Participants build a personal decision intelligence toolkit, reducing decision paralysis and improving the quality of choices made under pressure and uncertainty.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">05</div>
+      <div class="outcome-title">Precision AI Prompt Thinking</div>
+      <div class="outcome-body">精准比努力值钱 — The 3A+P framework directly elevates AI prompt quality. Participants learn to set precise context, define angles, and surface hidden presuppositions — producing sharper AI output with less effort and less noise.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">06</div>
+      <div class="outcome-title">A Self-Sustaining Learning Culture</div>
+      <div class="outcome-body">(5-Day) Teams design their own knowledge-sharing community using emergence principles — ensuring the training investment compounds over time, not evaporates.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ METHODOLOGY ═══ -->
+<section class="section" id="methodology">
+  <div class="sec-header">
+    <span class="label">06 · Teaching Methodology</span>
+    <h2 class="sec-title">How This Program Is Delivered</h2>
+    <p class="sec-sub">Not a lecture series. Not a slide marathon. This program operates on a learning-by-doing model where every concept is immediately stress-tested against real participant scenarios.</p>
+  </div>
+  <div class="method-row">
+    <div class="method-card">
+      <div class="method-icon">📖</div>
+      <div class="method-name">Concept + Real Case</div>
+      <div class="method-desc">Every framework is introduced through a real-world case — from business, history, or the trainer's 22 years of entrepreneurial experience — before participants apply it to their own context.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">⚡</div>
+      <div class="method-name">Live Application</div>
+      <div class="method-desc">Participants work with their actual workplace challenges throughout the program. Theory never exists in isolation — it is always connected to a real problem in the room.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">🔄</div>
+      <div class="method-name">Candid Feedback Loops</div>
+      <div class="method-desc">Coach Sophia's signature style: direct, honest, and unflinching. Participants receive real feedback on their thinking — not performative encouragement. Growth comes from precision, not comfort.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">🤖</div>
+      <div class="method-name">AI-Integrated Tools</div>
+      <div class="method-desc">Selected sessions integrate AI tools to demonstrate how structured thinking frameworks directly improve AI prompt quality and output — making the connection between human thinking and machine execution concrete.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRAINER ═══ -->
+<section class="section" id="trainer">
+  <div class="sec-header">
+    <span class="label">07 · Lead Trainer</span>
+    <h2 class="sec-title">Coach Sophia Tey</h2>
+  </div>
+  <div class="trainer-wrap">
+
+    <div class="trainer-photo-panel">
+            <div style="width:160px;height:160px;border-radius:50%;border:2px solid var(--gold-line);margin:0 auto 16px;overflow:hidden;background:var(--ink-4);display:flex;align-items:center;justify-content:center;">
+        <img src="data:image/jpeg;base64,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" alt="Coach Sophia Tey" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+      </div>
+      <div class="trainer-name-main">Sophia Tey</div>
+      <div class="trainer-title-main">Organisational Development Expert<br>Master Trainer · Program Advisor<br>in Vision Building</div>
+      <div class="trainer-stats">
+        <div class="t-stat">
+          <div class="t-stat-n">22+</div>
+          <div class="t-stat-l">Years Exp.</div>
+        </div>
+        <div class="t-stat">
+          <div class="t-stat-n">1000+</div>
+          <div class="t-stat-l">Sessions</div>
+        </div>
+        <div class="t-stat">
+          <div class="t-stat-n">100+</div>
+          <div class="t-stat-l">Companies</div>
+        </div>
+        <div class="t-stat">
+          <div class="t-stat-n">14×</div>
+          <div class="t-stat-l">Speech Champ</div>
+        </div>
+      </div>
+      <a class="trainer-li-link" href="https://www.linkedin.com/in/sophia-tey-947202aa/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        View LinkedIn Profile
+      </a>
+    </div>
+
+    <div class="trainer-detail-panel">
+      <div class="trainer-bio">
+        <strong>Sophia Tey</strong> is a seasoned entrepreneur, speaker, facilitator, coach, and trainer with over <strong>22 years of experience</strong> building businesses, leading teams, and driving impactful learning experiences across Malaysia and the region. Known for her down-to-earth style and sharp strategic thinking, she has served over <strong>100 multinational and local companies</strong> across industries spanning banking, FMCG, tech, logistics, and professional services.
+        <br><br>
+        Managing a diverse business portfolio and leading a team of over <strong>10,000 people</strong>, Sophia brings an entrepreneur's real-world intensity into every training room. She does not teach from textbooks alone — she teaches from decisions made, mistakes survived, and systems built from the ground up. Her students have called her <strong>"The Coach Who Dares to Scold"</strong> — because precision, not comfort, is where real growth happens.
+      </div>
+
+      <div class="trainer-credentials-grid">
+        <div class="cred-block">
+          <div class="cred-label">Academic &amp; Professional</div>
+          <div class="cred-items">
+            <div class="cred-item">BBA (Hons), University Tunku Abdul Rahman (UTAR)</div>
+            <div class="cred-item">Certified Professional Trainer</div>
+            <div class="cred-item">Certified Speaker, International Speakers Association (ISA)</div>
+            <div class="cred-item">ISA Sub-Committee Member</div>
+          </div>
+        </div>
+        <div class="cred-block">
+          <div class="cred-label">Languages of Delivery</div>
+          <div class="cred-items">
+            <div class="cred-item">Mandarin Chinese (Primary — Native Level)</div>
+            <div class="cred-item">English (Full Professional Proficiency)</div>
+            <div class="cred-item">Bahasa Malaysia (Conversational)</div>
+          </div>
+        </div>
+        <div class="cred-block">
+          <div class="cred-label">Roles &amp; Directorships</div>
+          <div class="cred-items">
+            <div class="cred-item">Director, Nexting Ventures Berhad</div>
+            <div class="cred-item">Director &amp; Advisor, VB Advisory Sdn Bhd</div>
+            <div class="cred-item">Founder, Nextion Academy Sdn Bhd (6,000+ community members)</div>
+          </div>
+        </div>
+        <div class="cred-block">
+          <div class="cred-label">Areas of Expertise</div>
+          <div class="cred-items">
+            <div class="cred-item">Structural &amp; Systems Thinking</div>
+            <div class="cred-item">Decision Intelligence &amp; Leadership</div>
+            <div class="cred-item">AI Prompt Thinking &amp; Context Frameworks</div>
+            <div class="cred-item">Organisational Development &amp; Team Scalability</div>
+          </div>
+        </div>
+      </div>
+
+      <span class="label" style="margin-bottom:12px">Recognition &amp; Awards</span>
+      <div class="awards-row">
+        <span class="award-pill gold">🏆 HR Vendors of the Year 2025 — Best Team Building Provider</span>
+        <span class="award-pill">14× Speech Competition Champion</span>
+        <span class="award-pill">DSAM Outstanding Entrepreneur Award 2016</span>
+        <span class="award-pill">Asia Pacific Super Team Award 2012</span>
+        <span class="award-pill">Toastmasters District 51 — Table Topic Champion 2017</span>
+        <span class="award-pill">Malaysia Open Motivational Speech Champion 2017</span>
+        <span class="award-pill">Nottingham Open Speech Contest Champion 2019</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CLIENTS ═══ -->
+<section class="section" id="clients">
+  <div class="sec-header">
+    <span class="label">08 · Track Record</span>
+    <h2 class="sec-title">Trusted by Industry Leaders<br>Across Malaysia &amp; the Region</h2>
+    <p class="sec-sub">Over 100 multinational and local organisations served — across banking, technology, FMCG, logistics, property, and healthcare sectors.</p>
+  </div>
+    <div class="clients-marquee-wrap">
+    <div class="clients-row">
+      <span class="client-tag">NTT</span>
+      <span class="client-tag">AMD</span>
+      <span class="client-tag">Samsung</span>
+      <span class="client-tag">ASUS</span>
+      <span class="client-tag">Intel</span>
+      <span class="client-tag">Huawei</span>
+      <span class="client-tag">Maxis</span>
+      <span class="client-tag">Maybank</span>
+      <span class="client-tag">CIMB</span>
+      <span class="client-tag">UOB</span>
+      <span class="client-tag">Public Bank</span>
+      <span class="client-tag">Alliance Bank</span>
+      <span class="client-tag">Standard Chartered</span>
+      <span class="client-tag">Zurich</span>
+      <span class="client-tag">Allianz</span>
+      <span class="client-tag">Prudential</span>
+      <span class="client-tag">AstraZeneca</span>
+      <span class="client-tag">Reckitt</span>
+      <span class="client-tag">Beiersdorf</span>
+      <span class="client-tag">F&amp;N</span>
+      <span class="client-tag">Toyota</span>
+      <span class="client-tag">Lexus</span>
+      <span class="client-tag">DHL</span>
+      <span class="client-tag">J&amp;T Express</span>
+      <span class="client-tag">Sunway</span>
+      <span class="client-tag">EcoWorld</span>
+      <span class="client-tag">Gamuda</span>
+      <span class="client-tag">Sime UMW</span>
+      <span class="client-tag">Petronas</span>
+      <span class="client-tag">Shell</span>
+      <span class="client-tag">ExxonMobil</span>
+      <span class="client-tag">EY</span>
+      <span class="client-tag">PwC</span>
+      <span class="client-tag">Heineken</span>
+      <span class="client-tag">McDonald's</span>
+      <span class="client-tag">Haier</span>
+      <span class="client-tag">OPPO</span>
+      <span class="client-tag">StashAway</span>
+      <span class="client-tag">Singapore Airlines</span>
+      <span class="client-tag">Monash University</span>
+      <span class="client-tag">Hisense</span>
+      <span class="client-tag">Bayer</span>
+      <span class="client-tag">Ansell</span>
+      <span class="client-tag">Boost</span>
+      <span class="client-tag">SEA</span>
+      <span class="client-tag">Cuckoo</span>
+    </div>
+  </div>
+  
+  <hr class="rule" style="margin-top:32px; margin-bottom:24px">
+  <div style="display:flex; gap:48px; flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Featured In</div>
+      <div style="font-size:13px;color:var(--cream-dim);line-height:1.9">中国报 China Press · 南洋商报 Nanyang Siang Pau · 星洲日报 Sin Chew Daily<br>Astro · ECHINASIA · e27 · YOU Streaming</div>
+    </div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Training Delivery</div>
+      <div style="font-size:13px;color:var(--cream-dim);line-height:1.9">In-house corporate · Conference keynotes · Multi-day immersive cohorts<br>Private leadership programmes · Community-based learning</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section" id="engage">
+  <div class="cta-inner">
+    <span class="label">09 · Next Steps</span>
+    <h2 class="cta-title">Ready to Build <em>Thinking Clarity</em><br>Into Your Organisation?</h2>
+    <p class="cta-sub">Both programs are available for in-house corporate delivery, customised to your industry context and team composition. Minimum group size and scheduling are flexible. All programs are HRDCorp claimable.</p>
+    <div class="cta-info-grid">
+      <div class="cta-info-card">
+        <div class="cta-info-lbl">Program Format</div>
+        <div class="cta-info-val">In-House Corporate<br>or Cohort-Based</div>
+      </div>
+      <div class="cta-info-card">
+        <div class="cta-info-lbl">Participant Size</div>
+        <div class="cta-info-val">3 – 10 Pax<br>(customisable)</div>
+      </div>
+      <div class="cta-info-card">
+        <div class="cta-info-lbl">HRDCorp</div>
+        <div class="cta-info-val">Claimable<br>Both Programs</div>
+      </div>
+    </div>
+    <div style="margin-top:8px">
+      <span class="label" style="margin-bottom:12px">Enquiries &amp; Booking</span>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+        <a href="https://www.linkedin.com/in/sophia-tey-947202aa/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold),var(--gold-lt));color:#0B0F1A;text-decoration:none;border-radius:6px;padding:14px 26px;font-size:13px;font-weight:700;letter-spacing:.02em;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+          Contact your People Development Specialist →
+        </a>
+      </div>
+    </div>
+    <div class="cta-note">
+      This proposal is prepared by Vision Building. Program content, duration, and structure can be customised to align with specific organisational objectives and industry context. Pricing available upon request based on group size and delivery format.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-brand">Vision Building</div>
+  <div class="footer-doc">Corporate Training Proposal · 2025</div>
+  <div class="footer-conf">Prepared by Vision Building · Confidential</div>
+</footer>
+
+</body>
+</html>
