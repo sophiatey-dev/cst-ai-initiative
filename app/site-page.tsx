@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, type CSSProperties } from "react";
-import { KakuIdentityHero } from "./components/kaku-identity-hero";
+import { KakuIdentityField, KakuIdentityHero } from "./components/kaku-identity-hero";
 
 const nav = [
   ["Forum AIR", "AI 论坛 AIR", "/forum"],
@@ -158,7 +158,20 @@ function Home() {
     ["ORGANISE","Community & Self-Organisation","Build communities that keep evolving"]
   ];
   return <>
-    <KakuIdentityHero protocol={lang==="zh"?"系统在线 // CST_AI_倡议 // KAKU_协议_V2":"SYSTEM ONLINE // CST_AI_INITIATIVE // KAKU_PROTOCOL_V2"} eyebrow={lang==="zh"?"CST AI 倡议 · KAKU 社群":"CST AI INITIATIVE · KAKU COMMUNITY"} headline={lang==="zh"?<>一起学习。<br/><em>一起进化。</em></>:<>We learn.<br/><em>We evolve.</em></>} description={lang==="zh"?"连接真实的人、实用的 AI 与持续学习的社群，一起探索 AI 时代，也一起探索未来的每一个时代。":"Connecting real people, practical AI and a continuously learning community—to navigate the AI era and every era after it."} primaryLabel={lang==="zh"?"加入下一场对话":"Join the next conversation"} primaryHref={FORUM_AIR_REGISTRATION_URL} primaryExternal secondaryLabel={lang==="zh"?"探索 Kaku":"Explore Kaku"} secondaryHref={localPath("/community",lang)} identityLabel={lang==="zh"?"持续学习协议已启动":"CONTINUOUS LEARNING PROTOCOL ACTIVE"} imageAlt={lang==="zh"?"Ka-Ku 黑猩猩身份协议":"Ka-Ku chimpanzee identity protocol"} scrollLabel={lang==="zh"?"向下探索":"SCROLL TO EXPLORE"}/>
+    <KakuIdentityHero
+      protocol={lang==="zh"?"系统在线 // CST_AI_倡议 // KAKU_协议_V2":"SYSTEM ONLINE // CST_AI_INITIATIVE // KAKU_PROTOCOL_V2"}
+      eyebrow={lang==="zh"?"CST AI 倡议 · KAKU 社群":"CST AI INITIATIVE · KAKU COMMUNITY"}
+      headline={lang==="zh"?<>一起学习。<br/><em>一起进化。</em></>:<>We learn.<br/><em>We evolve.</em></>}
+      description={lang==="zh"?"连接真实的人、实用的 AI 与持续学习的社群，一起探索 AI 时代，也一起探索未来的每一个时代。":"Connecting real people, practical AI and a continuously learning community—to navigate the AI era and every era after it."}
+      primaryLabel={lang==="zh"?"加入下一场对话":"Join the next conversation"}
+      primaryHref={FORUM_AIR_REGISTRATION_URL}
+      primaryExternal
+      secondaryLabel={lang==="zh"?"探索 Kaku":"Explore Kaku"}
+      secondaryHref={localPath("/community",lang)}
+      identityLabel={lang==="zh"?"持续学习协议已启动":"CONTINUOUS LEARNING PROTOCOL ACTIVE"}
+      imageAlt={lang==="zh"?"Ka-Ku 黑猩猩身份协议":"Ka-Ku chimpanzee identity protocol"}
+      scrollLabel={lang==="zh"?"向下探索":"SCROLL TO EXPLORE"}
+    />
     <section className="wow-manifesto"><p className="eyebrow dark">{lang==="zh"?"为什么是 AI · 为什么是现在":"WHY AI · WHY NOW"}</p><h2>{lang==="zh"?<>AI 不只是信息革命。<br/>它是一场<em>认知革命。</em></>:<>AI is more than an information revolution.<br/>It is a <em>cognitive revolution.</em></>}</h2><p>{lang==="zh"?"我们创造连接、体验与学习路径，让不同背景的人从 AI 热潮走向 AI 习惯，并在变化中找到自己的位置。":"We create connections, experiences and learning pathways that move people from AI hype to AI habit—and help them find their place in a changing world."}</p></section>
     <section className="wow-proof"><article className="wow-proof-number"><strong>365</strong><span>{lang==="zh"?"天持续学习":"DAYS OF LEARNING"}</span></article><Photo src="/assets/events/community/cst-276.jpg" alt={lang==="zh"?"Kaku 社群交流":"Kaku community gathering"}/><article><strong>4</strong><span>{lang==="zh"?"条旗舰学习路径":"FLAGSHIP PATHWAYS"}</span></article><Photo src="/assets/events/forum-air/cst-keynote.jpg" alt={lang==="zh"?"CST AI 论坛现场":"CST AI forum keynote"}/><article><strong>1</strong><span>{lang==="zh"?"个共同成长的社群":"COMMUNITY, GROWING TOGETHER"}</span></article></section>
     <section className="wow-worlds"><div className="wow-section-title"><p className="eyebrow dark">{lang==="zh"?"进入我们的世界":"ENTER THE ECOSYSTEM"}</p><h2>{lang==="zh"?"从一场对话开始。":"It starts with a conversation."}</h2></div>{worlds.map((w,i)=><article className={`wow-world ${i%2?"reverse":""}`} key={w.no}><div className="wow-world-image"><Photo src={w.image} alt={w.title}/><span>{w.no}</span></div><div className="wow-world-copy"><p>{w.eyebrow}</p><h3>{w.title}</h3><div>{w.copy}</div><a className="wow-round-link" href={localPath(w.href,lang)}>{w.cta}<span>→</span></a></div></article>)}</section>
@@ -273,7 +286,8 @@ function InnerHero({page}:{page:string}) {
  const d=pageData[page]||pageData.about;
  const i=lang==="zh"?1:0;
  const style = page==="about" ? ({"--about-image":`url("${withBase("/assets/about/jane-goodall-chimpanzee-about.png")}")`} as CSSProperties) : undefined;
- return <section style={style} data-protocol={lang==="zh"?"系统在线 // CST_AI_倡议 // KAKU_协议_V1":"SYSTEM ONLINE // CST_AI_INITIATIVE // KAKU_PROTOCOL_V1"} className={`inner-hero ${page==="about"?"about-hero":""}`}><p className="eyebrow">{d.eyebrow[i]}</p><h1>{d.title[i]}</h1><p>{d.lead[i]}</p>{page==="about"&&<small className="image-credit">{lang==="zh"?"Jane Goodall 与黑猩猩 · 用户提供图片":"Jane Goodall with a chimpanzee · user-provided image"}</small>}<div className="line"/></section>;
+ const identityLabel=lang==="zh"?`${page.toUpperCase()} // KAKU 身份系统在线`:`${page.toUpperCase()} // KAKU IDENTITY ONLINE`;
+ return <section style={style} data-protocol={lang==="zh"?"系统在线 // CST_AI_倡议 // KAKU_协议_V2":"SYSTEM ONLINE // CST_AI_INITIATIVE // KAKU_PROTOCOL_V2"} className={`inner-hero identity-inner-hero identity-${page} ${page==="about"?"about-hero":""}`}><KakuIdentityField label={identityLabel} showImage={page!=="about"}/><p className="eyebrow">{d.eyebrow[i]}</p><h1>{d.title[i]}</h1><p>{d.lead[i]}</p><div className="identity-hero-index"><span>KA-KU_IDENTITY</span><span>{page.toUpperCase()}</span><span>CONTINUOUS_LEARNING</span></div>{page==="about"&&<small className="image-credit">{lang==="zh"?"Jane Goodall 与黑猩猩 · 用户提供图片":"Jane Goodall with a chimpanzee · user-provided image"}</small>}<div className="line"/></section>;
 }
 
 export function SitePage({page,initialLang="en"}:{page:string;initialLang?:Lang}) {
@@ -288,5 +302,5 @@ export function SitePage({page,initialLang="en"}:{page:string;initialLang?:Lang}
  useEffect(()=>{document.documentElement.lang=lang==="zh"?"zh-CN":"en"},[lang]);
  let body;
  switch(page){case"forum":body=<Forum/>;break;case"workshops":body=<Workshops/>;break;case"membership":body=<Membership/>;break;case"community":body=<Community/>;break;case"calendar":body=<Calendar/>;break;case"pulse":body=<Pulse/>;break;case"enterprise":body=<Enterprise/>;break;case"about":body=<About/>;break;default:body=<Home/>}
- return <LanguageContext.Provider value={{lang,setLang}}><Header/><main>{body}</main><Footer/><a className="mobile-cta" href={FORUM_AIR_REGISTRATION_URL} target="_blank" rel="noreferrer">{lang==="zh"?"报名参加 Forum AIR":"Register for Forum AIR"} ↗</a></LanguageContext.Provider>;
+ return <LanguageContext.Provider value={{lang,setLang}}><Header/><main className={`identity-page identity-page-${page}`}>{body}</main><Footer/><a className="mobile-cta" href={FORUM_AIR_REGISTRATION_URL} target="_blank" rel="noreferrer">{lang==="zh"?"报名参加 Forum AIR":"Register for Forum AIR"} ↗</a></LanguageContext.Provider>;
 }
