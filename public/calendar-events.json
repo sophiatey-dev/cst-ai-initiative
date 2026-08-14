@@ -48,11 +48,27 @@
     "copy": "Ka-Ku community calendar event."
   },
   {
+    "category": "AI for Business and Works",
+    "iso": "2026-08-07",
+    "date": "07 AUG",
+    "time": "All day",
+    "title": "BiggIns Live Trading Gathering",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
     "category": "AI for Skills",
     "iso": "2026-08-08",
     "date": "08 AUG",
     "time": "9:00 am–12:00 pm",
     "title": "CST AI Prompt Thinking Workshop 008",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "AI for Skills",
+    "iso": "2026-08-12",
+    "date": "12 AUG",
+    "time": "All day",
+    "title": "BiggIns Preview class",
     "copy": "Ka-Ku community calendar event."
   },
   {
@@ -70,6 +86,14 @@
     "time": "8:00 pm–10:00 pm",
     "title": "Lunavera [Wine Yoga]",
     "copy": "<p>Connect &amp; destress.</p>"
+  },
+  {
+    "category": "AI for Business and Works",
+    "iso": "2026-08-19",
+    "date": "19 AUG",
+    "time": "All day",
+    "title": "BiggIns Basic Trading 1% playbook",
+    "copy": "Ka-Ku community calendar event."
   },
   {
     "category": "AI for All",
@@ -94,6 +118,14 @@
     "time": "8:00 pm–10:00 pm",
     "title": "Lunavera [Forest Bath Yoga]",
     "copy": "<p>Connect &amp; destress.</p>"
+  },
+  {
+    "category": "AI for Skills",
+    "iso": "2026-08-26",
+    "date": "26 AUG",
+    "time": "All day",
+    "title": "BiggIns Preview class",
+    "copy": "Ka-Ku community calendar event."
   },
   {
     "category": "Community and Life Interests",
