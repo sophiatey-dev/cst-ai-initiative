@@ -15,3 +15,9 @@
 html[lang="zh"] .manifesto h2{max-width:1280px;font-size:clamp(54px,5.7vw,92px);line-height:1.02;letter-spacing:-.045em;text-transform:none;text-wrap:balance}
 html[lang="zh"] .manifesto>p:last-child{max-width:1120px;line-height:1.7}
 @media(max-width:650px){html[lang="zh"] .manifesto h2{max-width:100%;font-size:clamp(40px,12vw,54px);line-height:1.08;letter-spacing:-.04em}html[lang="zh"] .manifesto>p:last-child{font-size:18px;line-height:1.7}}
+
+
+/* Balanced Ka-Ku closing statement */
+html[lang="zh"] .join h2{width:100%;max-width:1200px;font-size:clamp(68px,6.2vw,108px);line-height:.96;letter-spacing:-.055em;text-transform:none;text-wrap:balance;white-space:normal}
+html[lang="zh"] .join>p:not(.eyebrow){max-width:900px;margin-top:4px}
+@media(max-width:650px){html[lang="zh"] .join h2{max-width:8.5em;font-size:48px;line-height:1.08;letter-spacing:-.04em}html[lang="zh"] .join>p:not(.eyebrow){font-size:18px;line-height:1.65}}
