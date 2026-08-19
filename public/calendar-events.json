@@ -88,19 +88,19 @@
     "copy": "<p>Connect &amp; destress.</p>"
   },
   {
+    "category": "AI for Skills",
+    "iso": "2026-08-19",
+    "date": "19 AUG",
+    "time": "9:00 am–12:00 pm",
+    "title": "CST AI Prompt Thinking Workshop 009 (private)",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
     "category": "AI for Business and Works",
     "iso": "2026-08-19",
     "date": "19 AUG",
     "time": "All day",
     "title": "BiggIns Basic Trading 1% playbook",
-    "copy": "Ka-Ku community calendar event."
-  },
-  {
-    "category": "AI for All",
-    "iso": "2026-08-22",
-    "date": "22 AUG",
-    "time": "1:30 pm–4:00 pm",
-    "title": "CST AI Forum Air #2",
     "copy": "Ka-Ku community calendar event."
   },
   {
@@ -134,6 +134,14 @@
     "time": "2:00 pm–4:00 pm",
     "title": "Lunavera [Coffee Tasting Experiences]",
     "copy": "<p>Know your beans and make your own coffee drip bag.</p>"
+  },
+  {
+    "category": "AI for All",
+    "iso": "2026-08-29",
+    "date": "29 AUG",
+    "time": "1:30 pm–4:00 pm",
+    "title": "CST AI Forum Air #2",
+    "copy": "Ka-Ku community calendar event."
   },
   {
     "category": "Community and Life Interests",
