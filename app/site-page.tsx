@@ -105,9 +105,74 @@ const eventZh: Record<string,{title:string;copy:string;date:string;time:string}>
   "2026-08-27|Lunavera Crossover · Coffee Tasting Experience":{title:"Lunavera 联名体验 · 咖啡品鉴",copy:"认识咖啡豆风味，并亲手制作自己的咖啡滤泡包。",date:"8月27日",time:"下午2:00–4:00"},
 };
 
-const displayEvent = (e:typeof events[number],lang:Lang) => lang==="zh"
-  ? {...e,category:categoryZh[e.category]||e.category,...(eventZh[`${e.iso}|${e.title}`]||eventZh[e.title]||{})}
-  : e;
+const stripCalendarMarkup = (value:string) => value
+  .replace(/<[^>]*>/g," ")
+  .replace(/&amp;/g,"&")
+  .replace(/&nbsp;/g," ")
+  .replace(/\s+/g," ")
+  .trim();
+
+const chineseEventDate = (iso:string) => {
+  const [,month,day]=iso.split("-").map(Number);
+  return month&&day?`${month}月${day}日`:iso;
+};
+
+const chineseEventTime = (time:string) => {
+  if(!time) return "";
+  if(/^(all day|full day)$/i.test(time)) return "全天";
+  if(/^time tba$/i.test(time)) return "时间待公布";
+  return time
+    .replace(/12:(\d{2})\s*AM/gi,"凌晨12:$1")
+    .replace(/12:(\d{2})\s*PM/gi,"中午12:$1")
+    .replace(/(\d{1,2}):(\d{2})\s*AM/gi,(_,h,m)=>`${Number(h)<6?"凌晨":"上午"}${h}:${m}`)
+    .replace(/(\d{1,2}):(\d{2})\s*PM/gi,(_,h,m)=>`${Number(h)>=6?"晚上":"下午"}${h}:${m}`);
+};
+
+const chineseEventTitle = (title:string) => {
+  const value=stripCalendarMarkup(title);
+  const workshop=value.match(/^(?:CST )?AI Prompt Thinking Workshop(?:\s+(\d+))?(\s+\(private\))?$/i);
+  if(workshop) return `CST AI 提示思维工作坊${workshop[1]?` ${workshop[1]}`:""}${workshop[2]?"（非公开）":""}`;
+  const course=value.match(/^CST AI Prompt Thinking (\d+) Days? Course(?:\s+(\d+))?$/i);
+  if(course) return `CST AI 提示思维 ${course[1]} 天课程${course[2]?` ${course[2]}`:""}`;
+  const foundation=value.match(/^AI Prompt Thinking Foundation(\s+\(private\))?$/i);
+  if(foundation) return `AI 提示思维基础课${foundation[1]?"（非公开）":""}`;
+  if(/^CST AI Forum Air/i.test(value)) return value.replace(/CST AI Forum Air/i,"CST AI 论坛 AIR");
+  if(/^CST AI Initiative Summit$/i.test(value)) return "CST AI 倡议峰会";
+  if(/^BiggIns Live Trading Gathering$/i.test(value)) return "BiggIns 实盘交易聚会";
+  if(/^BiggIns Preview class$/i.test(value)) return "BiggIns 预览课";
+  if(/^BiggIns Basic Trading 1% playbook$/i.test(value)) return "BiggIns 基础交易 1% 实战手册";
+  if(/^Lunavera \[Signature Scent Experience\]$/i.test(value)) return "Lunavera 联名体验 · 个人香氛工作坊";
+  if(/^Lunavera \[Wine Yoga\]$/i.test(value)) return "Lunavera 联名体验 · 红酒瑜伽";
+  if(/^Lunavera \[Forest Bath Yoga\]$/i.test(value)) return "Lunavera 联名体验 · 森林浴瑜伽";
+  if(/^Lunavera \[Coffee Tasting Experiences?\]$/i.test(value)) return "Lunavera 联名体验 · 咖啡品鉴";
+  if(/^Cheras After Dark$/i.test(value)) return "Cheras 夜间聚会";
+  return value;
+};
+
+const chineseEventCopy = (copy:string) => {
+  const value=stripCalendarMarkup(copy);
+  if(!value||value==="Ka-Ku community calendar event.") return "Ka-Ku 社群活动。";
+  if(/make your own perfume workshop/i.test(value)) return "亲手调制属于自己的香水，探索气味与个人表达。";
+  if(/connect\s*&\s*destress/i.test(value)) return "在轻松体验中连结彼此、释放压力。";
+  if(/know your beans/i.test(value)) return "认识咖啡豆风味，并亲手制作自己的咖啡滤泡包。";
+  if(/Sibu, Sarawak, Malaysia/i.test(value)) return "马来西亚砂拉越诗巫";
+  return value;
+};
+
+const displayEvent = (e:CalendarEvent,lang:Lang) => {
+  const cleaned={...e,title:stripCalendarMarkup(e.title),copy:stripCalendarMarkup(e.copy)};
+  if(lang==="en") return cleaned;
+  const exact=eventZh[`${e.iso}|${e.title}`]||eventZh[e.title];
+  return {
+    ...cleaned,
+    category:categoryZh[e.category]||e.category,
+    date:chineseEventDate(e.iso),
+    time:chineseEventTime(e.time),
+    title:chineseEventTitle(e.title),
+    copy:chineseEventCopy(e.copy),
+    ...(exact||{}),
+  };
+};
 
 function AssetSlot({ label, tall = false }: { label: string; tall?: boolean }) {
   const {lang}=useLanguage();
@@ -142,7 +207,7 @@ function Home() {
   const worlds=lang==="zh"?[
     {no:"01",eyebrow:"AI 论坛 AIR",title:"看见 AI 时代",copy:"一个播客式公共论坛，让不同背景的人一起讨论 AI 现实、机遇、挑战与就绪能力。",cta:"进入论坛",href:"/forum",image:"/assets/events/forum-air/cst-audience.jpg"},
     {no:"02",eyebrow:"实用 AI 课堂",title:"从好奇到会用",copy:"三小时建立 AI 基础、提示思维与日常工作流程，把 AI 热潮转化成真正的 AI 习惯。",cta:"探索免费课堂",href:"/workshops",image:"/assets/learning/prompt-thinking/prompt-thinking-class.png"},
-    {no:"03",eyebrow:"KAKU 学习社群",title:"一起学习与进化",copy:"365 天持续学习、应用、分享与连接。课程带来能力，社群让学习持续发生。",cta:"认识 Kaku",href:"/community",image:"/assets/events/community/cst-302.jpg"}
+    {no:"03",eyebrow:"KAKU 学习社群",title:"一起学习与进化",copy:"365 天持续学习、应用、分享与连接。课程带来能力，社群让学习持续发生。",cta:"认识 Kaku",href:"/community",image:"/assets/events/community/cst-538.jpg"}
   ]:[
     {no:"01",eyebrow:"AI FORUM AIR",title:"See the AI era",copy:"A podcast-style public forum where different perspectives meet AI Reality, Opportunity, Challenges and Readiness.",cta:"Enter the forum",href:"/forum",image:"/assets/events/forum-air/cst-audience.jpg"},
     {no:"02",eyebrow:"PRACTICAL AI CLASSES",title:"From curious to capable",copy:"Three practical hours to build AI foundations, prompt thinking and everyday workflows—from AI hype to AI habit.",cta:"Explore free classes",href:"/workshops",image:"/assets/learning/prompt-thinking/prompt-thinking-class.png"},
@@ -186,8 +251,8 @@ function Home() {
 
 function EventCard({e}:{e:typeof events[number]}) {
  const {lang}=useLanguage();
- const isForum=e.title.includes("Forum AIR");
- const isPromptThinking=e.title==="AI Prompt Thinking Workshop";
+ const isForum=/Forum AIR/i.test(e.title);
+ const isPromptThinking=/AI Prompt Thinking (?:Workshop|Foundation)/i.test(e.title);
  const destination=isForum?FORUM_AIR_REGISTRATION_URL:isPromptThinking?localPath("/ai-prompt-thinking",lang):e.href;
  const isExternal=Boolean(destination?.startsWith("http"));
  const shown=displayEvent(e,lang);
@@ -211,7 +276,7 @@ function MonthlyCalendar({visibleEvents,lang}:{visibleEvents:typeof events;lang:
  const cat=(c:string)=>c==="AI for All"?"cat-all":c==="AI for Skills"?"cat-skills":c==="AI for Business and Works"?"cat-business":"cat-community";
  return <section className="month-calendar" aria-label={lang==="zh"?"完整月历":"Full month calendar"}>
   <div className="month-toolbar"><div><span className="eyebrow">{lang==="zh"?"月历总览":"MONTHLY OVERVIEW"}</span><h2>{label}</h2></div><div className="month-nav"><button type="button" aria-label={lang==="zh"?"上个月":"Previous month"} onClick={()=>setMonth(new Date(month.getFullYear(),month.getMonth()-1,1))}>←</button><button type="button" aria-label={lang==="zh"?"下个月":"Next month"} onClick={()=>setMonth(new Date(month.getFullYear(),month.getMonth()+1,1))}>→</button></div></div>
-  <div className="month-scroll"><div className="month-weekdays">{weekdays.map(w=><span key={w}>{w}</span>)}</div><div className="month-grid">{days.map(day=>{const key=iso(day);const dayEvents=visibleEvents.filter(e=>e.iso===key);return <div className={`month-day${day.getMonth()!==month.getMonth()?" outside":""}`} key={key}><span className="month-number">{day.getDate()}</span><div className="month-events">{dayEvents.map(e=>{const forum=e.title.includes("Forum AIR");const href=forum?FORUM_AIR_REGISTRATION_URL:e.href;const shown=displayEvent(e,lang);return <a className={`month-event ${cat(e.category)}`} href={href||localPath("/calendar",lang)} target={href?"_blank":undefined} rel={href?"noreferrer":undefined} key={`${e.iso}-${e.title}-${e.time}`}><small>{shown.time}</small><strong>{shown.title}</strong></a>})}</div></div>})}</div></div>
+  <div className="month-scroll"><div className="month-weekdays">{weekdays.map(w=><span key={w}>{w}</span>)}</div><div className="month-grid">{days.map(day=>{const key=iso(day);const dayEvents=visibleEvents.filter(e=>e.iso===key);return <div className={`month-day${day.getMonth()!==month.getMonth()?" outside":""}`} key={key}><span className="month-number">{day.getDate()}</span><div className="month-events">{dayEvents.map(e=>{const forum=/Forum AIR/i.test(e.title);const href=forum?FORUM_AIR_REGISTRATION_URL:e.href;const shown=displayEvent(e,lang);return <a className={`month-event ${cat(e.category)}`} href={href||localPath("/calendar",lang)} target={href?"_blank":undefined} rel={href?"noreferrer":undefined} key={`${e.iso}-${e.title}-${e.time}`}><small>{shown.time}</small><strong>{shown.title}</strong></a>})}</div></div>})}</div></div>
   <div className="month-legend"><span className="cat-all">{lang==="zh"?"全民 AI":"AI for All"}</span><span className="cat-skills">{lang==="zh"?"AI 技能":"AI for Skills"}</span><span className="cat-business">{lang==="zh"?"AI 商业与工作":"AI for Business and Works"}</span><span className="cat-community">{lang==="zh"?"社群与生活兴趣":"Community and Life Interests"}</span></div>
  </section>;
 }
@@ -226,7 +291,7 @@ function Calendar() {
    fetch(withBase("/calendar-events.json"),{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject()).then((data:CalendarEvent[])=>{if(Array.isArray(data)&&data.length){setCalendarEvents(data);setSynced(true)}}).catch(()=>{});
  },[]);
  const filtered=calendarEvents.filter(e=>filter==="All"||e.category===filter);
- return <><InnerHero page="calendar"/><section className="calendar-section"><div className="calendar-live-bar"><div><span className={`sync-dot ${synced?"active":""}`}/><p><strong>{lang==="zh"?"Kaku Google Calendar 已连接":"Connected to Kaku Google Calendar"}</strong><small>{lang==="zh"?"后台更新会自动同步，网页仍使用 Ka-Ku 原本设计。":"Backend updates sync automatically while the website keeps the original Ka-Ku design."}</small></p></div><a href={KAKU_GOOGLE_CALENDAR_URL} target="_blank" rel="noreferrer">{lang==="zh"?"查看 Google Calendar":"View Google Calendar"} ↗</a></div><div className="filters">{["All",...categories].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f==="All"?(lang==="zh"?"所有活动":"All events"):(lang==="zh"?categoryZh[f]:f)}</button>)}</div><div className="calendar-grid">{filtered.map(e=><EventCard key={`${e.iso}-${e.title}-${e.time}`} e={e}/>)}</div><MonthlyCalendar visibleEvents={filtered} lang={lang}/><div className="calendar-contact"><span>🐵</span><p>{lang==="zh"?"想预留座位？请私讯 Anna：018-660 6731。部分活动已满额；Chimps 会员可享有指定活动的免费席位或专属优惠价。":"Want to reserve a seat? PM Anna at 018-660 6731. Some events may be fully booked; selected events include complimentary seats or exclusive Chimps member rates."}</p><a href="https://wa.me/60186606731" target="_blank" rel="noreferrer">WhatsApp Anna ↗</a></div></section></>;
+ return <><InnerHero page="calendar"/><section className="calendar-section"><div className="calendar-live-bar"><div><span className={`sync-dot ${synced?"active":""}`}/><p><strong>{lang==="zh"?"Kaku Google Calendar 已连接":"Connected to Kaku Google Calendar"}</strong><small>{lang==="zh"?"后台更新会自动同步，网页仍使用 Ka-Ku 原本设计。":"Backend updates sync automatically while the website keeps the original Ka-Ku design."}</small></p></div><a href={KAKU_GOOGLE_CALENDAR_URL} target="_blank" rel="noreferrer">{lang==="zh"?"查看 Google Calendar":"View Google Calendar"} ↗</a></div><div className="filters">{["All",...categories].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f==="All"?(lang==="zh"?"所有活动":"All events"):(lang==="zh"?categoryZh[f]:f)}</button>)}</div><div className="calendar-grid">{filtered.map(e=><EventCard key={`${e.iso}-${e.title}-${e.time}`} e={e}/>)}</div><MonthlyCalendar visibleEvents={filtered} lang={lang}/><div className="calendar-contact"><span>🐵</span><p>{lang==="zh"?"想预留座位？请私讯 Anna：018-660 6731。部分活动已满额；Chimps 会员可享有指定活动的免费席位或专属优惠价。":"Want to reserve a seat? PM Anna at 018-660 6731. Some events may be fully booked; selected events include complimentary seats or exclusive Chimps member rates."}</p><a href="https://wa.me/60186606731" target="_blank" rel="noreferrer">{lang==="zh"?"WhatsApp 联系 Anna":"WhatsApp Anna"} ↗</a></div></section></>;
 }
 
 function Pulse() {
@@ -263,7 +328,7 @@ function AiPromptThinking() {
   <section className="apt-loop"><p className="eyebrow">{lang==="zh"?"核心学习循环":"THE CORE LEARNING LOOP"}</p><div>{loop.map((x,i)=><span key={x}><b>0{i+1}</b>{x}</span>)}</div></section>
   <section className="apt-curriculum"><div className="section-head"><div><p className="eyebrow dark">{lang==="zh"?"三小时学习内容":"3-HOUR LEARNING OUTLINE"}</p><h2>{lang==="zh"?"从会使用，到会思考。":"From using AI to thinking with AI."}</h2></div></div><div className="apt-module-grid">{modules.map(m=><article key={m[0]}><span>{m[0]}</span><h3>{m[1]}</h3><p>{m[2]}</p></article>)}</div></section>
   <section className="apt-practice"><Photo src="/assets/learning/prompt-thinking/prompt-thinking-class.png" alt={lang==="zh"?"Ka-Ku AI 提示思维工作坊现场":"Ka-Ku AI Prompt Thinking workshop"} className="tall"/><div><p className="eyebrow">{lang==="zh"?"你会带走什么":"WHAT YOU LEAVE WITH"}</p><h2>{lang==="zh"?"一套可以继续使用的 AI 思考方法。":"A reusable way to think and work with AI."}</h2><ul>{(lang==="zh"?["个人提示框架与检查清单","让 AI 向你提问的元提示方法","语音到结构化输出的工作流程","观点扩展与关键词生成方法","一套可持续优化的提示循环"]:["A personal prompt framework and diagnostic checklist","A meta-prompting method that makes AI question you","A voice-to-structured-output workflow","Perspective and keyword expansion methods","A prompt loop you can keep improving"]).map(x=><li key={x}>{x}</li>)}</ul></div></section>
-  <section className="apt-membership"><div><p className="eyebrow">KAKU 365</p><h2>{lang==="zh"?"RM365，不只参加一次。":"RM365. Not just one workshop."}</h2><p>{lang==="zh"?"加入 Ka-Ku 365，可在一年会员期内，根据公布日历、报名规则与席位安排，无限次参加 AI 提示思维工作坊。每一次回来，都可以带着新的问题继续练习。":"Join Ka-Ku 365 and attend scheduled AI Prompt Thinking workshops throughout your one-year membership, subject to registration rules and seat availability. Return with new questions and keep practising."}</p><div className="actions"><a className="button" href={KAKU_365_PAYMENT_URL} target="_blank" rel="noreferrer">{lang==="zh"?"加入 Ka-Ku 365":"Join Ka-Ku 365"} →</a><a className="text-link" href={AI_PROMPT_THINKING_URL} target="_blank" rel="noreferrer">{lang==="zh"?"查看原课程网站":"View original workshop site"} ↗</a></div></div><Photo src="/assets/events/community/cst-538.jpg" alt={lang==="zh"?"Ka-Ku 社群成员在活动中共同参与、体验与连接":"Ka-Ku community members participating in a shared activity together"} className="tall apt-community-photo"/></section>
+  <section className="apt-membership"><div><p className="eyebrow">KAKU 365</p><h2>{lang==="zh"?"RM365，不只参加一次。":"RM365. Not just one workshop."}</h2><p>{lang==="zh"?"加入 Ka-Ku 365，可在一年会员期内，根据公布日历、报名规则与席位安排，无限次参加 AI 提示思维工作坊。每一次回来，都可以带着新的问题继续练习。":"Join Ka-Ku 365 and attend scheduled AI Prompt Thinking workshops throughout your one-year membership, subject to registration rules and seat availability. Return with new questions and keep practising."}</p><div className="actions"><a className="button" href={KAKU_365_PAYMENT_URL} target="_blank" rel="noreferrer">{lang==="zh"?"加入 Ka-Ku 365":"Join Ka-Ku 365"} →</a><a className="text-link" href={AI_PROMPT_THINKING_URL} target="_blank" rel="noreferrer">{lang==="zh"?"查看原课程网站":"View original workshop site"} ↗</a></div></div><Photo src="/assets/people/paul-phong.jpeg" alt="Paul Phong" className="tall paul-photo"/></section>
   <section className="trainer-slot"><Photo src="/assets/people/paul-phong.jpeg" alt={lang==="zh"?"AI 提示思维导师 Paul Phong":"AI Prompt Thinking trainer Paul Phong"} className="tall paul-photo"/><div><p className="eyebrow dark">{lang==="zh"?"课程导师":"WORKSHOP TRAINER"}</p><h2>Paul Phong</h2><p className="trainer-line">{lang==="zh"?"拥有 13 年经验的 CPA 转型讲者、马来西亚讲师协会演讲比赛亚军——一位让数字有温度、有血有肉的会计师。":"A CPA with 13 years’ experience turned speaker, first runner-up in the Malaysia Speakers Association public speaking contest—and an accountant who brings numbers to life."}</p></div></section>
  </>;
 }
@@ -336,4 +401,3 @@ export function SitePage({page,initialLang="en"}:{page:string;initialLang?:Lang}
  switch(page){case"forum":body=<Forum/>;break;case"workshops":body=<Workshops/>;break;case"ai-prompt-thinking":body=<AiPromptThinking/>;break;case"membership":body=<Membership/>;break;case"community":body=<Community/>;break;case"calendar":body=<Calendar/>;break;case"pulse":body=<Pulse/>;break;case"enterprise":body=<Enterprise/>;break;case"about":body=<About/>;break;default:body=<Home/>}
  return <LanguageContext.Provider value={{lang,setLang}}><Header/><main className={`identity-page identity-page-${page}`}>{body}</main><Footer/><a className="mobile-cta" href={FORUM_AIR_REGISTRATION_URL} target="_blank" rel="noreferrer">{lang==="zh"?"报名参加 Forum AIR":"Register for Forum AIR"} ↗</a></LanguageContext.Provider>;
 }
-
