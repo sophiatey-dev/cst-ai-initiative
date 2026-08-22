@@ -136,14 +136,6 @@
     "copy": "<p>Know your beans and make your own coffee drip bag.</p>"
   },
   {
-    "category": "AI for All",
-    "iso": "2026-08-29",
-    "date": "29 AUG",
-    "time": "1:30 pm–4:00 pm",
-    "title": "CST AI Forum Air #2",
-    "copy": "Ka-Ku community calendar event."
-  },
-  {
     "category": "Community and Life Interests",
     "iso": "2026-08-30",
     "date": "30 AUG",
@@ -157,6 +149,14 @@
     "date": "11 SEPT",
     "time": "7:00 pm–10:00 pm",
     "title": "AI Prompt Thinking Workshop 010",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "AI for All",
+    "iso": "2026-09-12",
+    "date": "12 SEPT",
+    "time": "1:30 pm–4:00 pm",
+    "title": "CST AI Forum Air #2",
     "copy": "Ka-Ku community calendar event."
   },
   {
