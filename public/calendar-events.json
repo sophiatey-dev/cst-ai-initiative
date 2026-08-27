@@ -140,7 +140,7 @@
     "iso": "2026-09-10",
     "date": "10 SEPT",
     "time": "9:00 am–12:00 pm",
-    "title": "AI Prompt Thinking Workshop 011",
+    "title": "AI Prompt Thinking Workshop 012 (Kuching)",
     "copy": "Ka-Ku community calendar event."
   },
   {
@@ -148,7 +148,7 @@
     "iso": "2026-09-11",
     "date": "11 SEPT",
     "time": "7:00 pm–10:00 pm",
-    "title": "AI Prompt Thinking Workshop 011",
+    "title": "AI Prompt Thinking Workshop 013",
     "copy": "Ka-Ku community calendar event."
   },
   {
@@ -164,7 +164,15 @@
     "iso": "2026-09-12",
     "date": "12 SEPT",
     "time": "9:00 am–12:00 pm",
-    "title": "AI Prompt Thinking Workshop 012",
+    "title": "AI Prompt Thinking Workshop 014",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "Community and Life Interests",
+    "iso": "2026-09-13",
+    "date": "13 SEPT",
+    "time": "8:00 am–10:00 am",
+    "title": "Lunavera [Forest Bath Yoga]",
     "copy": "Ka-Ku community calendar event."
   },
   {
@@ -177,10 +185,58 @@
   },
   {
     "category": "AI for Skills",
+    "iso": "2026-09-19",
+    "date": "19 SEPT",
+    "time": "10:00 am–1:00 pm",
+    "title": "A.I. ONBOARDING PROGRAM",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "AI for Skills",
+    "iso": "2026-09-19",
+    "date": "19 SEPT",
+    "time": "2:30 pm–5:30 pm",
+    "title": "A.I. ONBOARDING PROGRAM - CONTENT CREATION",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "Community and Life Interests",
+    "iso": "2026-09-19",
+    "date": "19 SEPT",
+    "time": "8:00 pm–10:00 pm",
+    "title": "Lunavera [Wine Yoga]",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "AI for Skills",
+    "iso": "2026-09-23",
+    "date": "23 SEPT",
+    "time": "10:00 am–1:00 pm",
+    "title": "A.I. ONBOARDING PROGRAM",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "AI for Skills",
+    "iso": "2026-09-23",
+    "date": "23 SEPT",
+    "time": "2:30 pm–5:30 pm",
+    "title": "A.I. ONBOARDING PROGRAM - CONTENT CREATION",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "AI for Skills",
     "iso": "2026-09-23",
     "date": "23 SEPT",
     "time": "7:00 pm–10:00 pm",
-    "title": "AI Prompt Thinking Workshop 012",
+    "title": "AI Prompt Thinking Workshop 015",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "Community and Life Interests",
+    "iso": "2026-09-27",
+    "date": "27 SEPT",
+    "time": "2:00 pm–5:00 pm",
+    "title": "Lunavera [Stone Clay Goblet Experience]",
     "copy": "Ka-Ku community calendar event."
   }
 ]
