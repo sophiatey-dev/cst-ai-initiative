@@ -137,6 +137,22 @@
   },
   {
     "category": "AI for Skills",
+    "iso": "2026-08-31",
+    "date": "31 AUG",
+    "time": "2:00 pm–4:00 pm",
+    "title": "Biggin introduction class ( Chinese )",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "AI for Skills",
+    "iso": "2026-09-07",
+    "date": "07 SEPT",
+    "time": "8:00 pm–10:00 pm",
+    "title": "Biggin introduction class ( Chinese )",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "AI for Skills",
     "iso": "2026-09-10",
     "date": "10 SEPT",
     "time": "9:00 am–12:00 pm",
@@ -177,6 +193,14 @@
   },
   {
     "category": "AI for Skills",
+    "iso": "2026-09-14",
+    "date": "14 SEPT",
+    "time": "2:00 pm–4:00 pm",
+    "title": "Biggin introduction class ( Malay )",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "AI for Skills",
     "iso": "2026-09-15",
     "date": "15 SEPT",
     "time": "All day",
@@ -209,6 +233,14 @@
   },
   {
     "category": "AI for Skills",
+    "iso": "2026-09-22",
+    "date": "22 SEPT",
+    "time": "8:00 pm–10:00 pm",
+    "title": "Biggin introduction class  ( Chinese )",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "AI for Skills",
     "iso": "2026-09-23",
     "date": "23 SEPT",
     "time": "10:00 am–1:00 pm",
@@ -237,6 +269,14 @@
     "date": "27 SEPT",
     "time": "2:00 pm–5:00 pm",
     "title": "Lunavera [Stone Clay Goblet Experience]",
+    "copy": "Ka-Ku community calendar event."
+  },
+  {
+    "category": "AI for Skills",
+    "iso": "2026-09-28",
+    "date": "28 SEPT",
+    "time": "8:00 pm–10:00 pm",
+    "title": "Biggin introduction class ( Chinese )",
     "copy": "Ka-Ku community calendar event."
   }
 ]
