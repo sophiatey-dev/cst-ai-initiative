@@ -1,3 +1,12 @@
+
+
+/* About key gateway — cinematic background */
+.about-key-transition{position:relative;display:grid;place-items:center;min-height:clamp(560px,78vw,900px);padding:clamp(90px,12vw,170px) 6vw;overflow:hidden;background:#12051f;color:white;border-bottom:12px solid var(--kaku-hot)}
+.about-key-transition:before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,rgba(8,3,13,.18),rgba(33,7,54,.62)),radial-gradient(circle at 50% 48%,transparent 0 18%,rgba(8,3,13,.42) 72%,rgba(8,3,13,.78) 100%);pointer-events:none}
+.about-key-background{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.88) contrast(1.08)}
+.about-key-copy{position:relative;z-index:2;width:min(1100px,90vw);text-align:center}
+.about-key-copy h2{margin:0;font-size:clamp(46px,7vw,112px);line-height:.9;letter-spacing:-.075em;text-transform:uppercase;color:white;text-shadow:4px 4px 0 rgba(114,27,227,.72),-2px 0 var(--kaku-aqua)}
+@media(max-width:650px){.about-key-transition{min-height:620px;padding:90px 22px}.about-key-copy{width:100%}.about-key-copy h2{font-size:44px}.about-key-background{object-position:center}}
 @import "tailwindcss";
 
 :root{--ink:#060a19;--paper:#f1eee7;--blue:#3677ff;--violet:#6350d8;--cyan:#18d7ff;--amber:#d88c39;--amber-soft:#f0bd72;--green:#42ff9c;--line:rgba(221,236,255,.18);--darkline:rgba(9,12,18,.14)}
