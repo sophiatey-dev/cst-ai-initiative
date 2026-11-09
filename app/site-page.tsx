@@ -297,7 +297,21 @@ function Calendar() {
 function Pulse() {
  const {lang}=useLanguage();
  const steps=lang==="zh"?["搜集可信来源","核实并去除重复资讯","归纳相关报道","评估相关性与影响","以浅白语言解读","人工审核关卡","发布并持续学习"]:["Gather trusted sources","Verify & deduplicate","Cluster related stories","Score relevance & impact","Explain in plain language","Human review gate","Publish & learn"];
- return <><InnerHero page="pulse"/><section className="pulse-flow">{steps.map((s,i)=><div key={s}><span>0{i+1}</span><h3>{s}</h3><p>{lang==="zh"?(i===0?"从官方实验室、研究机构、监管单位与可信媒体搜集资讯。":i===5?"在自动公开发布高影响内容前，建议由人员完成审核。":"保留消息来源轨迹，并透过反馈持续优化的智能循环。"):(i===0?"Official labs, research, regulators and reputable reporting.":i===5?"Recommended before public auto-publishing high-impact claims.":"Agentic loop with source traceability and feedback.")}</p></div>)}</section><section className="light-section"><div className="section-head"><div><p className="eyebrow dark">{lang==="zh"?"每日输出":"DAILY OUTPUT"}</p><h2>{lang==="zh"?"一则新闻，五种实用视角。":"One story. Five useful views."}</h2></div></div><div className="audience-cards">{(lang==="zh"?["大众","中小企业主","专业人士","教育工作者","社群领导者"]:["Everyone","SME owners","Professionals","Educators","Community leaders"]).map(x=><article key={x}><span>{x}</span><h3>{lang==="zh"?"为什么与我有关？":"Why should I care?"}</h3><p>{lang==="zh"?"以浅白语言说明背景、可能影响，以及一个可以立即采取的行动。":"Plain-language context, likely impact and one practical next step."}</p></article>)}</div></section></>;
+ return <><InnerHero page="pulse"/><PulseFeed lang={lang}/><section className="pulse-flow">{steps.map((s,i)=><div key={s}><span>0{i+1}</span><h3>{s}</h3><p>{lang==="zh"?(i===0?"从官方实验室、研究机构、监管单位与可信媒体搜集资讯。":i===5?"在自动公开发布高影响内容前，建议由人员完成审核。":"保留消息来源轨迹，并透过反馈持续优化的智能循环。"):(i===0?"Official labs, research, regulators and reputable reporting.":i===5?"Recommended before public auto-publishing high-impact claims.":"Agentic loop with source traceability and feedback.")}</p></div>)}</section><section className="light-section"><div className="section-head"><div><p className="eyebrow dark">{lang==="zh"?"每日输出":"DAILY OUTPUT"}</p><h2>{lang==="zh"?"一则新闻，五种实用视角。":"One story. Five useful views."}</h2></div></div><div className="audience-cards">{(lang==="zh"?["大众","中小企业主","专业人士","教育工作者","社群领导者"]:["Everyone","SME owners","Professionals","Educators","Community leaders"]).map(x=><article key={x}><span>{x}</span><h3>{lang==="zh"?"为什么与我有关？":"Why should I care?"}</h3><p>{lang==="zh"?"以浅白语言说明背景、可能影响，以及一个可以立即采取的行动。":"Plain-language context, likely impact and one practical next step."}</p></article>)}</div></section></>;
+}
+
+type PulseItem = { id:string; date:string; tag:[string,string]; audience:[string,string]; title:[string,string]; summary:[string,string]; why:[string,string]; action:[string,string]; sources:{name:string;url:string}[] };
+type PulseEdition = { edition:string; label:[string,string]; items:PulseItem[] };
+
+function PulseFeed({lang}:{lang:Lang}) {
+ const [edition,setEdition]=useState<PulseEdition|null>(null);
+ useEffect(()=>{
+   fetch(withBase("/pulse.json"),{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject()).then((data:PulseEdition)=>{if(data&&Array.isArray(data.items)&&data.items.length)setEdition(data)}).catch(()=>{});
+ },[]);
+ if(!edition) return null;
+ const i=lang==="zh"?1:0;
+ const fmt=(d:string)=>new Date(`${d}T00:00:00`).toLocaleDateString(lang==="zh"?"zh-CN":"en-MY",{day:"numeric",month:"short"});
+ return <section className="light-section pulse-feed"><div className="section-head"><div><p className="eyebrow dark">{lang==="zh"?"本周 AI 动态":"THIS WEEK IN AI"}</p><h2>{edition.label[i]}</h2></div></div><div className="pulse-feed-grid">{edition.items.map(it=><article key={it.id} className="pulse-story"><div className="pulse-story-meta"><span>{it.tag[i]}</span><time dateTime={it.date}>{fmt(it.date)}</time></div><h3>{it.title[i]}</h3><p>{it.summary[i]}</p><div className="pulse-story-why"><strong>{lang==="zh"?"为什么与我有关？":"Why it matters here"}</strong><p>{it.why[i]}</p></div><div className="pulse-story-action"><strong>{lang==="zh"?"一个行动":"One next step"} · {it.audience[i]}</strong><p>{it.action[i]}</p></div><div className="pulse-story-sources">{it.sources.map(s=><a key={s.url} href={s.url} target="_blank" rel="noreferrer">{s.name} ↗</a>)}</div></article>)}</div></section>;
 }
 
 function Membership() {

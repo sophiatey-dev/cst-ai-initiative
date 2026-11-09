@@ -1,0 +1,135 @@
+{
+  "edition": "2026-11-09",
+  "label": ["Week of 2 – 8 November 2026", "2026年11月2日至8日 · 本周精选"],
+  "status": "draft-for-review",
+  "items": [
+    {
+      "id": "aws-semarak-ai-malaysia",
+      "date": "2026-11-04",
+      "tag": ["Malaysia", "马来西亚"],
+      "audience": ["SME owners", "中小企业主"],
+      "title": [
+        "AWS launches Semarak AI Malaysia, a national push to put AI tools in local hands",
+        "AWS 推出「Semarak AI Malaysia」，把 AI 工具送到本地政府、学生与企业手中"
+      ],
+      "summary": [
+        "Launched in Kuala Lumpur with three pillars for government, business and community. Up to 445,000 civil servants get access to Amazon Quick, GovTech Malaysia starts a 500-developer pilot, and a GDEX/VSTECS programme aims to bring 10,000 SMEs on board by 2028 with six months of free tool access.",
+        "计划在吉隆坡推出，分为政府、企业、社区三大支柱。最多 44.5 万名公务员可使用 Amazon Quick，GovTech Malaysia 启动 500 名开发者试点，GDEX 与 VSTECS 的方案则计划在 2028 年前协助 1 万家中小企业上线，合格企业可免费使用工具六个月。"
+      ],
+      "why": [
+        "Free tools are arriving faster than the skills to use them well. For Malaysian SMEs, the gap is no longer access but knowing what to ask and how to direct the tool.",
+        "免费工具来得比使用能力更快。对马来西亚中小企业来说，差距已经不是“有没有工具”，而是“会不会提问、会不会指挥工具”。"
+      ],
+      "action": [
+        "If you run an SME in retail, e-commerce or manufacturing, check whether you qualify for the free six-month access, and pick one repetitive task to test it on first.",
+        "如果你经营零售、电商或制造业中小企业，先查看自己是否符合六个月免费使用资格，并挑一件重复性工作作为第一个试点。"
+      ],
+      "sources": [
+        { "name": "Amazon press release", "url": "https://press.aboutamazon.com/aws/2026/11/aws-launches-semarak-ai-malaysia-a-national-program-to-bring-ai-tools-to-government-officers-students-and-local-software-companies" }
+      ]
+    },
+    {
+      "id": "ai-stock-selloff-data-centres",
+      "date": "2026-11-05",
+      "tag": ["Markets", "市场"],
+      "audience": ["Everyone", "大众"],
+      "title": [
+        "AI stocks have their worst day since April 2025 as data-centre politics shift",
+        "AI 股票出现自 2025 年 4 月以来最惨烈的一天，数据中心议题成为焦点"
+      ],
+      "summary": [
+        "After the US midterm results, the Nasdaq 100 fell about 6.4% in one session and chip stocks dropped sharply. Voters also backed limits on new data centres in 40 of 41 local ballot measures, signalling growing public resistance to their power and land use.",
+        "美国中期选举结果出炉后，纳斯达克 100 指数单日下跌约 6.4%，芯片股大幅下挫。同时，在 41 项地方公投中，有 40 项支持限制新建数据中心，显示民众对其耗电与用地的反弹正在增强。"
+      ],
+      "why": [
+        "Malaysia, especially Johor, has bet heavily on hosting data centres. When resistance grows in the US, more projects may look to Southeast Asia, and the same questions about electricity, water and who benefits will follow them here.",
+        "马来西亚，尤其是柔佛，大力押注数据中心。当美国的反对声浪变大，更多项目可能转向东南亚，而关于电力、水资源以及“谁真正受益”的问题，也会跟着来到这里。"
+      ],
+      "action": [
+        "When you hear news of a new data centre in Malaysia, ask three questions: how much power and water it uses, how many local jobs it creates, and who pays for the infrastructure.",
+        "下次听到马来西亚有新的数据中心，问三个问题：耗多少电和水？创造多少本地工作？基础设施由谁买单？"
+      ],
+      "sources": [
+        { "name": "Ballotpedia", "url": "https://news.ballotpedia.org/2026/11/06/voters-favored-limiting-data-center-development-in-40-of-41-local-ballot-measures-on-nov-3/" },
+        { "name": "AP News", "url": "https://apnews.com/article/afe254c608c3d1fe2ea792812ba9765a" }
+      ]
+    },
+    {
+      "id": "mistral-managed-agents",
+      "date": "2026-11-06",
+      "tag": ["Agents", "智能体"],
+      "audience": ["Professionals", "专业人士"],
+      "title": [
+        "Mistral opens managed AI agents to the public, with a visual workflow builder",
+        "Mistral 开放托管式 AI 智能体公测，并推出可视化流程编辑器"
+      ],
+      "summary": [
+        "European AI lab Mistral opened a public preview of managed agents in its Studio, together with an agents toolkit, a drag-and-drop workflow builder and evaluation tools. Private-cloud and on-premise options are planned for late November.",
+        "欧洲 AI 实验室 Mistral 在其 Studio 平台开放托管式智能体公测，同时推出智能体开发工具包、拖拉式流程编辑器以及评估工具。私有云与本地部署版本预计在 11 月底推出。"
+      ],
+      "why": [
+        "Building an AI agent is turning from a coding job into a design job. The skill that matters is describing the workflow clearly: who does what, in which order, and how you check the result.",
+        "打造 AI 智能体，正在从“写程序”变成“设计流程”。真正关键的能力，是把工作流程讲清楚：谁做什么、先后顺序、以及如何检查结果。"
+      ],
+      "action": [
+        "Write down one weekly task as five clear steps with a quality check at the end. That written SOP is the blueprint any agent builder will need.",
+        "把一项每周重复的工作写成五个清楚的步骤，最后加上一个质量检查。这份 SOP，就是任何智能体工具都需要的蓝图。"
+      ],
+      "sources": [
+        { "name": "AI Weekly summary", "url": "https://aiweekly.co/alerts/mistral-opens-studio-managed-agents-in-public-preview-adds-workflow-builder-and" }
+      ]
+    },
+    {
+      "id": "google-k12-ai-default-off",
+      "date": "2026-11-03",
+      "tag": ["Education", "教育"],
+      "audience": ["Educators", "教育工作者"],
+      "title": [
+        "Google will switch AI off by default for school student accounts",
+        "Google 将为中小学生账户预设关闭 AI 功能"
+      ],
+      "summary": [
+        "Google said Gemini, Gemini in Classroom and Search will be off by default for K-12 student accounts until a school administrator turns them on. Because Google Search now comes with built-in AI, schools that keep AI off may lose Search too. The change is reported to start in early 2027.",
+        "Google 表示，中小学生账户的 Gemini、Classroom 内的 Gemini 以及搜索功能将预设关闭，需由学校管理员开启。由于 Google 搜索已内建 AI，选择关闭 AI 的学校可能连搜索也一并失去。据报道，此改动将于 2027 年初生效。"
+      ],
+      "why": [
+        "The decision on how children meet AI is moving from tech companies to schools and parents. Teachers who already have a clear stance will lead that conversation; those who don't will have it decided for them.",
+        "孩子如何接触 AI，这个决定权正从科技公司转到学校和家长手上。已经有清楚立场的老师会主导这场讨论，没有立场的，就只能被别人决定。"
+      ],
+      "action": [
+        "Educators and parents: agree on one simple rule for AI use at your school or home this month, such as \"AI can explain, but you must write the answer yourself.\"",
+        "老师与家长：这个月为学校或家里定下一条简单的 AI 使用规则，例如“AI 可以解释，但答案要自己写”。"
+      ],
+      "sources": [
+        { "name": "Notebookcheck", "url": "https://www.notebookcheck.net/Google-Search-for-students-will-soon-come-with-AI-or-not-at-all.1441984.0.html" },
+        { "name": "GovTech", "url": "https://www.govtech.com/education/k-12/google-reverses-decision-to-turn-off-search-for-schools-not-using-ai" }
+      ]
+    },
+    {
+      "id": "ai-finds-security-flaws",
+      "date": "2026-11-04",
+      "tag": ["Security", "网络安全"],
+      "audience": ["SME owners", "中小企业主"],
+      "title": [
+        "AI can now find software security holes by the hundreds",
+        "AI 现在能成百上千地找出软件安全漏洞"
+      ],
+      "summary": [
+        "OpenAI described an automated system that hunts for flaws in the Linux kernel, tests whether they can be exploited and drafts fixes. In one run it produced working exploits for 948 distinct flaws, with humans reviewing findings before disclosure. A day later it released a specialised cyber model to a small group of approved customers.",
+        "OpenAI 公布一套自动化系统，可在 Linux 内核中寻找漏洞、测试是否可被利用并草拟修补方案。在其中一次运行中，它为 948 个不同漏洞产生了可行的攻击方式，所有发现在公开前都经人工审核。隔天，OpenAI 也向少数获批客户推出了专门的网络安全模型。"
+      ],
+      "why": [
+        "If defenders can find holes this fast, so can attackers. For small businesses, the risk now sits mostly in old, unpatched software, not in sophisticated hacking.",
+        "如果防守方能这么快找到漏洞，攻击方也可以。对小企业来说，最大的风险已经不是高深的黑客技术，而是那些很久没更新的旧软件。"
+      ],
+      "action": [
+        "Turn on automatic updates for every computer, phone, router and website plugin in your business this week. It is the cheapest security upgrade you will ever make.",
+        "这个星期，把公司所有电脑、手机、路由器和网站插件都开启自动更新。这是你能做的最便宜的安全升级。"
+      ],
+      "sources": [
+        { "name": "OpenAI", "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/" },
+        { "name": "OpenAI", "url": "https://openai.com/index/introducing-gpt-6-cyber/" }
+      ]
+    }
+  ]
+}
